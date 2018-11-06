@@ -1,4 +1,4 @@
 .idea/*
-.venv/*
+venv/*
 mre.egg-info/*
 dist/*
