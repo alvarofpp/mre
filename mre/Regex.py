@@ -1,10 +1,11 @@
 from abc import ABC
+from typing import Union
 
 
 class Regex(ABC):
-    """Classe base."""
+    """Base class."""
 
-    def __init__(self, regex=""):
+    def __init__(self, regex: str = ""):
         self.rgx = regex
         self._define_metacharacter()
 
@@ -12,16 +13,17 @@ class Regex(ABC):
         """Magic method to print."""
         return self.rgx
 
-    def __eq__(self, other):
-        """Operator =."""
+    def __eq__(self, other: Union[str, 'Regex']):
+        """Operator = ."""
         return (self.rgx == other.rgx) if isinstance(other, Regex) else (self.rgx == other)
 
-    def __iadd__(self, other):
+    def __iadd__(self, other: Union[str, 'Regex']):
+        """Operator += ."""
         self.rgx += other.rgx if isinstance(other, Regex) else other
         return self
 
-    def __add__(self, regex):
-        """Operator +."""
+    def __add__(self, regex: Union[str, 'Regex']):
+        """Operator + ."""
         rgx = Regex()
         if isinstance(regex, Regex):
             rgx.set(self.rgx + regex.rgx)
@@ -30,8 +32,12 @@ class Regex(ABC):
 
         return rgx
 
-    def set(self, regex):
-        self.rgx = regex
+    def set(self, regex: Union[str, 'Regex']):
+        """Set regex value."""
+        if isinstance(regex, Regex):
+            self.rgx = regex.rgx
+        else:
+            self.rgx = str(regex)
 
     def _define_metacharacter(self):
         # Metacharacter
@@ -46,4 +52,3 @@ class Regex(ABC):
         self.NOT_DIGIT = "\D"
         self.NOT_WHITESPACE = "\S"
         self.NOT_WORD_CHARS = "\W"
-

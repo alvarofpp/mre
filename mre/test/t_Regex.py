@@ -1,6 +1,6 @@
-import mre
+from mre import Regex
 
-test = mre.Regex("[A-z]")
+test = Regex("[A-z]")
 
 # __eq__
 assert test == "[A-z]"
@@ -13,5 +13,6 @@ assert test == "[A-z]{3}"
 test.set("[0-9]{5}")
 assert test == "[0-9]{5}"
 
-test_cep = test + "-" + mre.Regex("[0-9]{3}")
+# __add__
+test_cep = test + "-" + Regex("[0-9]{3}")
 assert test_cep == "[0-9]{5}-[0-9]{3}"
