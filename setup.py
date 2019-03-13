@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mre",
-    version="0.0.2",
+    version="0.0.3",
     author="Álvaro Ferreira Pires de Paiva",
     author_email="alvarofepipa@gmail.com",
     description="Maker Regular Expressions",
