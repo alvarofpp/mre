@@ -1,5 +1,5 @@
 .idea/*
 venv/*
-mre.egg-info/*
 dist/*
+build/*
 mre/__pycache__/*

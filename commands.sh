@@ -4,4 +4,4 @@ pip install -e .
 
 # Distribuir
 python setup.py bdist_wheel
-python -m twine upload dist/#!/usr/bin/env bash
+python -m twine upload dist/
