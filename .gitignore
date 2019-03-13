@@ -2,3 +2,4 @@
 venv/*
 mre.egg-info/*
 dist/*
+mre/__pycache__/*
