@@ -4,6 +4,7 @@ mre/Group.py
 mre/Quantifier.py
 mre/Range.py
 mre/Regex.py
+mre/Set.py
 mre/__init__.py
 mre.egg-info/PKG-INFO
 mre.egg-info/SOURCES.txt
