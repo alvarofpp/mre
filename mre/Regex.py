@@ -39,6 +39,22 @@ class Regex(ABC):
         else:
             self.rgx = str(regex)
 
+    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
+        if n == 0 and m == 1:
+            self.rgx += self.ZERO_OR_ONE
+        elif n == 0 and without_maximum:
+            self.rgx += self.ZERO_OR_MULTIPLE
+        elif n == 1 and without_maximum:
+            self.rgx += self.ONE_OR_MULTIPLE
+        else:
+            regex = str(n)
+            if without_maximum:
+                regex += ','
+            elif not m <= n:
+                regex += "," + str(m)
+            self.rgx += "{" + regex + "}"
+        return self
+
     def _define_metacharacter(self):
         # Metacharacter
         self.ANY = "."
@@ -52,3 +68,8 @@ class Regex(ABC):
         self.NOT_DIGIT = "\D"
         self.NOT_WHITESPACE = "\S"
         self.NOT_WORD_CHARS = "\W"
+
+        # Quantifiers
+        self.ZERO_OR_ONE = "?"
+        self.ZERO_OR_MULTIPLE = "*"
+        self.ONE_OR_MULTIPLE = "+"
