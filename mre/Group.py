@@ -2,8 +2,8 @@ from .Regex import Regex
 from typing import Union
 
 
-class Set(Regex):
-    """Set class."""
+class Group(Regex):
+    """Group class."""
 
     def __init__(self, regex: Union[str, Regex] = ""):
         if isinstance(regex, str):
@@ -39,4 +39,4 @@ class Set(Regex):
 
     def _format(self, regex: str = ""):
         """Format regex."""
-        return "[{}]".format(regex)
+        return "({})".format(regex)

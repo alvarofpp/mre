@@ -4,10 +4,28 @@ from typing import Union
 
 class Regex(ABC):
     """Base class."""
+    # Metacharacter
+    ANY = "."
+    DOT = "\."
+    DIGIT = "\d"
+    WHITESPACE = "\s"
+    WORD_CHARS = "\w"  # Equivalent [A-Za-z0-9_]
+
+    # Metacharacter (Negate)
+    NOT_DIGIT = "\D"
+    NOT_WHITESPACE = "\S"
+    NOT_WORD_CHARS = "\W"
+
+    # Quantifiers
+    ZERO_OR_ONE = "?"
+    ZERO_OR_MULTIPLE = "*"
+    ONE_OR_MULTIPLE = "+"
+
+    # Set
+    HYPHEN = "\-"
 
     def __init__(self, regex: str = ""):
         self.rgx = regex
-        self._define_metacharacter()
 
     def __str__(self):
         """Magic method to print."""
@@ -26,7 +44,7 @@ class Regex(ABC):
         """Operator + ."""
         rgx = Regex()
         if isinstance(regex, Regex):
-            rgx._set_regex(self.rgx + regex.rgx)
+            rgx._set_regex(self.get() + regex.get())
         else:
             rgx._set_regex(self.rgx + regex)
 
@@ -61,24 +79,3 @@ class Regex(ABC):
             self.rgx = regex.rgx
         else:
             self.rgx = str(regex)
-
-    def _define_metacharacter(self):
-        # Metacharacter
-        self.ANY = "."
-        self.DOT = "\."
-        self.DIGIT = "\d"
-        self.WHITESPACE = "\s"
-        self.WORD_CHARS = "\w"  # Equivalent [A-Za-z0-9_]
-
-        # Metacharacter (Negate)
-        self.NOT_DIGIT = "\D"
-        self.NOT_WHITESPACE = "\S"
-        self.NOT_WORD_CHARS = "\W"
-
-        # Quantifiers
-        self.ZERO_OR_ONE = "?"
-        self.ZERO_OR_MULTIPLE = "*"
-        self.ONE_OR_MULTIPLE = "+"
-
-        # Set
-        self.HYPHEN = "\-"
