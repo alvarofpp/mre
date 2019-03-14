@@ -26,34 +26,41 @@ class Regex(ABC):
         """Operator + ."""
         rgx = Regex()
         if isinstance(regex, Regex):
-            rgx.set(self.rgx + regex.rgx)
+            rgx._set_regex(self.rgx + regex.rgx)
         else:
-            rgx.set(self.rgx + regex)
+            rgx._set_regex(self.rgx + regex)
 
         return rgx
 
-    def set(self, regex: Union[str, 'Regex']):
-        """Set regex value."""
-        if isinstance(regex, Regex):
-            self.rgx = regex.rgx
-        else:
-            self.rgx = str(regex)
+    def get(self):
+        """Return regex."""
+        return self.rgx
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
+        """Quantify the regex."""
+        rgx = self.rgx
         if n == 0 and m == 1:
-            self.rgx += self.ZERO_OR_ONE
+            rgx += self.ZERO_OR_ONE
         elif n == 0 and without_maximum:
-            self.rgx += self.ZERO_OR_MULTIPLE
+            rgx += self.ZERO_OR_MULTIPLE
         elif n == 1 and without_maximum:
-            self.rgx += self.ONE_OR_MULTIPLE
+            rgx += self.ONE_OR_MULTIPLE
         else:
             regex = str(n)
             if without_maximum:
                 regex += ','
             elif not m <= n:
                 regex += "," + str(m)
-            self.rgx += "{" + regex + "}"
-        return self
+            rgx += "{" + regex + "}"
+
+        return Regex(rgx)
+
+    def _set_regex(self, regex: Union[str, 'Regex']):
+        """Set regex value."""
+        if isinstance(regex, Regex):
+            self.rgx = regex.rgx
+        else:
+            self.rgx = str(regex)
 
     def _define_metacharacter(self):
         # Metacharacter
@@ -62,7 +69,6 @@ class Regex(ABC):
         self.DIGIT = "\d"
         self.WHITESPACE = "\s"
         self.WORD_CHARS = "\w"  # Equivalent [A-Za-z0-9_]
-        self.HYPHEN = "\-"
 
         # Metacharacter (Negate)
         self.NOT_DIGIT = "\D"
@@ -73,3 +79,6 @@ class Regex(ABC):
         self.ZERO_OR_ONE = "?"
         self.ZERO_OR_MULTIPLE = "*"
         self.ONE_OR_MULTIPLE = "+"
+
+        # Set
+        self.HYPHEN = "\-"

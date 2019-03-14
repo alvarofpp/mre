@@ -10,7 +10,7 @@ test += "{3}"
 assert test == "[A-z]{3}"
 
 # set
-test.set("[0-9]{5}")
+test._set_regex("[0-9]{5}")
 assert test == "[0-9]{5}"
 
 # __add__
