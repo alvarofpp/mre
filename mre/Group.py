@@ -5,11 +5,13 @@ from typing import Union
 class Group(Regex):
     """Group class."""
 
-    def __init__(self, regex: Union[str, Regex] = ""):
+    def __init__(self, regex: Union[str, Regex] = "", non_capturing: bool = False):
+        nc = "?:" if non_capturing else ""
+
         if isinstance(regex, str):
-            super().__init__(regex)
+            super().__init__(nc + regex)
         else:
-            super().__init__(regex.get())
+            super().__init__(nc + regex.get())
 
     def __str__(self):
         """Magic method to print."""
