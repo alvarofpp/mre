@@ -6,10 +6,7 @@ class Set(Regex):
     """Set class."""
 
     def __init__(self, regex: Union[str, Regex] = ""):
-        if isinstance(regex, str):
-            super().__init__(regex)
-        else:
-            super().__init__(regex.get())
+        super().__init__(regex)
 
     def __str__(self):
         """Magic method to print."""

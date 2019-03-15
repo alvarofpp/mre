@@ -1,8 +1,8 @@
 README.md
 setup.py
+mre/Anchor.py
 mre/Group.py
 mre/Quantifier.py
-mre/Range.py
 mre/Regex.py
 mre/Set.py
 mre/__init__.py
@@ -10,3 +10,5 @@ mre.egg-info/PKG-INFO
 mre.egg-info/SOURCES.txt
 mre.egg-info/dependency_links.txt
 mre.egg-info/top_level.txt
+mre/helper/Range.py
+mre/helper/__init__.py

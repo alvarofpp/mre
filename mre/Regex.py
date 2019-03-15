@@ -24,8 +24,11 @@ class Regex(ABC):
     # Set
     HYPHEN = "\-"
 
-    def __init__(self, regex: str = ""):
-        self.rgx = regex
+    def __init__(self, regex: Union[str, 'Regex'] = ""):
+        if isinstance(regex, str):
+            self.rgx = regex
+        else:
+            self.rgx = regex.get()
 
     def __str__(self):
         """Magic method to print."""
