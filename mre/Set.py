@@ -18,21 +18,12 @@ class Set(Regex):
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
         """Quantify the regex."""
-        rgx = self._format(self.rgx)
-        if n == 0 and m == 1:
-            rgx += self.ZERO_OR_ONE
-        elif n == 0 and without_maximum:
-            rgx += self.ZERO_OR_MULTIPLE
-        elif n == 1 and without_maximum:
-            rgx += self.ONE_OR_MULTIPLE
-        else:
-            regex = str(n)
-            if without_maximum:
-                regex += ','
-            elif not m <= n:
-                regex += "," + str(m)
-            rgx += "{" + regex + "}"
-        return Regex(rgx)
+        rgx = self.rgx
+        self.rgx = self._format(self.rgx)
+        regex_return = super().quantifier(n, m, without_maximum)
+        self.rgx = rgx
+
+        return regex_return
 
     def _format(self, regex: str = ""):
         """Format regex."""

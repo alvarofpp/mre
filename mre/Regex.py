@@ -10,6 +10,7 @@ class Regex(ABC):
     DIGIT = "\d"
     WHITESPACE = "\s"
     WORD_CHARS = "\w"  # Equivalent [A-Za-z0-9_]
+    SLASH = "\/"
 
     # Metacharacter (Negate)
     NOT_DIGIT = "\D"
@@ -24,11 +25,16 @@ class Regex(ABC):
     # Set
     HYPHEN = "\-"
 
-    def __init__(self, regex: Union[str, 'Regex'] = ""):
-        if isinstance(regex, str):
-            self.rgx = regex
-        else:
-            self.rgx = regex.get()
+    def __init__(self, *regexs: Union[str, 'Regex', int]):
+        self.rgx = ""
+
+        for regex in regexs:
+            if isinstance(regex, int):
+                self.rgx = self.back_references(regex).get()
+            elif isinstance(regex, str):
+                self.rgx += regex
+            else:
+                self.rgx += regex.get()
 
     def __str__(self):
         """Magic method to print."""
@@ -40,7 +46,7 @@ class Regex(ABC):
 
     def __iadd__(self, other: Union[str, 'Regex']):
         """Operator += ."""
-        self.rgx += other.rgx if isinstance(other, Regex) else other
+        self.rgx += other.rgx if isinstance(other, Regex) else str(other)
         return self
 
     def __add__(self, regex: Union[str, 'Regex']):
@@ -75,6 +81,10 @@ class Regex(ABC):
             rgx += "{" + regex + "}"
 
         return Regex(rgx)
+
+    def back_references(self, group_n: int = 1):
+        """Back reference to a group."""
+        return Regex(self.rgx, "\{}".format(group_n))
 
     def _set_regex(self, regex: Union[str, 'Regex']):
         """Set regex value."""

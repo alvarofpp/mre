@@ -5,13 +5,17 @@ from typing import Union
 class Group(Regex):
     """Group class."""
 
-    def __init__(self, regex: Union[str, Regex] = "", non_capturing: bool = False):
+    def __init__(self, regex: Union[str, Regex, int] = "", non_capturing: bool = False):
         nc = "?:" if non_capturing else ""
 
-        if isinstance(regex, str):
-            super().__init__(nc + regex)
+        if isinstance(regex, int):
+            regex = self.back_references(regex)
+        elif isinstance(regex, str):
+            regex = nc + regex
         else:
-            super().__init__(nc + regex.get())
+            regex = nc + regex.get()
+
+        super().__init__(regex)
 
     def __str__(self):
         """Magic method to print."""
@@ -23,21 +27,12 @@ class Group(Regex):
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
         """Quantify the regex."""
-        rgx = self._format(self.rgx)
-        if n == 0 and m == 1:
-            rgx += self.ZERO_OR_ONE
-        elif n == 0 and without_maximum:
-            rgx += self.ZERO_OR_MULTIPLE
-        elif n == 1 and without_maximum:
-            rgx += self.ONE_OR_MULTIPLE
-        else:
-            regex = str(n)
-            if without_maximum:
-                regex += ','
-            elif not m <= n:
-                regex += "," + str(m)
-            rgx += "{" + regex + "}"
-        return Regex(rgx)
+        rgx = self.rgx
+        self.rgx = self._format(self.rgx)
+        regex_return = super().quantifier(n, m, without_maximum)
+        self.rgx = rgx
+
+        return regex_return
 
     def _format(self, regex: str = ""):
         """Format regex."""
