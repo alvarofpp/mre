@@ -25,12 +25,12 @@ class Regex(ABC):
     # Set
     HYPHEN = "\\-"
 
-    def __init__(self, *regexs: Union[str, 'Regex', int]):
+    def __init__(self, *regexs: Union[str, int, 'Regex']):
         self.rgx = ""
 
         for regex in regexs:
             if isinstance(regex, int):
-                self.rgx = self.back_references(regex).get()
+                self.rgx = self.backreferences(regex).get()
             elif isinstance(regex, str):
                 self.rgx += regex
             else:
@@ -38,15 +38,15 @@ class Regex(ABC):
 
     def __str__(self):
         """Magic method to print."""
-        return self.rgx
+        return self.get()
 
     def __eq__(self, other: Union[str, 'Regex']):
-        """Operator = ."""
+        """Operator == ."""
         return (self.get() == other.get()) if isinstance(other, Regex) else (self.get() == other)
 
     def __iadd__(self, other: Union[str, 'Regex']):
         """Operator += ."""
-        self.rgx += other.rgx if isinstance(other, Regex) else str(other)
+        self.rgx += other.get() if isinstance(other, Regex) else str(other)
         return self
 
     def __add__(self, regex: Union[str, 'Regex']):
@@ -55,7 +55,7 @@ class Regex(ABC):
         if isinstance(regex, Regex):
             rgx._set_regex(self.get() + regex.get())
         else:
-            rgx._set_regex(self.rgx + regex)
+            rgx._set_regex(self.get() + regex)
 
         return rgx
 
@@ -82,9 +82,9 @@ class Regex(ABC):
 
         return Regex(rgx)
 
-    def back_references(self, group_n: int = 1):
+    def backreferences(self, group_n: int = 1):
         """Back reference to a group."""
-        return Regex(self.rgx, "\{}".format(group_n))
+        return Regex(self.rgx, "\\{}".format(group_n))
 
     def _set_regex(self, regex: Union[str, 'Regex']):
         """Set regex value."""

@@ -5,25 +5,25 @@ from typing import Union
 class Range(Regex):
     """Range class."""
 
-    def __init__(self, min: Union[str, int] = 0, max: Union[str, int] = "z"):
-        super().__init__(self._format(min, max))
+    def __init__(self, minimum: Union[str, int] = 0, maximum: Union[str, int] = "z"):
+        super().__init__(self._format(minimum, maximum))
 
-    def numbers(self, min: int = 0, max: int = 9):
-        return Range(min, max)
+    def numbers(self, minimum: int = 0, maximum: int = 9):
+        return Range(minimum, maximum)
 
-    def letters(self, min: chr = 'A', max: chr = 'z', uppercase: bool = False, lowercase: bool = False):
+    def letters(self, minimum: chr = 'A', maximum: chr = 'z', uppercase: bool = False, lowercase: bool = False):
         if lowercase and uppercase:
-            min = min.lower()
-            max = max.upper()
+            minimum = minimum.lower()
+            maximum = maximum.upper()
         elif lowercase:
-            min = min.lower()
-            max = max.lower()
+            minimum = minimum.lower()
+            maximum = maximum.lower()
         elif uppercase:
-            min = min.upper()
-            max = max.upper()
+            minimum = minimum.upper()
+            maximum = maximum.upper()
 
-        return Range(min, max)
+        return Range(minimum, maximum)
 
-    def _format(self, min: Union[str, int] = None, max: Union[str, int] = None):
+    def _format(self, minimum: Union[str, int] = None, maximum: Union[str, int] = None):
         """Format regex."""
-        return "{}-{}".format(min, max)
+        return "{}-{}".format(minimum, maximum)
