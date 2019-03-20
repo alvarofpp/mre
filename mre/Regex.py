@@ -6,16 +6,16 @@ class Regex(ABC):
     """Base class."""
     # Metacharacter
     ANY = "."
-    DOT = "\."
-    DIGIT = "\d"
-    WHITESPACE = "\s"
-    WORD_CHARS = "\w"  # Equivalent [A-Za-z0-9_]
-    SLASH = "\/"
+    DOT = "\\."
+    DIGIT = "\\d"
+    WHITESPACE = "\\s"
+    WORD_CHARS = "\\w"  # Equivalent [A-Za-z0-9_]
+    SLASH = "\\/"
 
     # Metacharacter (Negate)
-    NOT_DIGIT = "\D"
-    NOT_WHITESPACE = "\S"
-    NOT_WORD_CHARS = "\W"
+    NOT_DIGIT = "\\D"
+    NOT_WHITESPACE = "\\S"
+    NOT_WORD_CHARS = "\\W"
 
     # Quantifiers
     ZERO_OR_ONE = "?"
@@ -23,7 +23,7 @@ class Regex(ABC):
     ONE_OR_MULTIPLE = "+"
 
     # Set
-    HYPHEN = "\-"
+    HYPHEN = "\\-"
 
     def __init__(self, *regexs: Union[str, 'Regex', int]):
         self.rgx = ""
@@ -42,7 +42,7 @@ class Regex(ABC):
 
     def __eq__(self, other: Union[str, 'Regex']):
         """Operator = ."""
-        return (self.rgx == other.rgx) if isinstance(other, Regex) else (self.rgx == other)
+        return (self.get() == other.get()) if isinstance(other, Regex) else (self.get() == other)
 
     def __iadd__(self, other: Union[str, 'Regex']):
         """Operator += ."""

@@ -9,4 +9,5 @@ This a simple package to make a regular expression in Python.
 pip install mre
 ```
 
-Test regex: [Regex101](https://regex101.com/).
+- Test regex: [Regex101](https://regex101.com/);
+- [Regular expression operations](https://docs.python.org/3/library/re.html).
