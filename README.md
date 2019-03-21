@@ -3,7 +3,14 @@
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mre.svg">
 </a>
 
-This a simple package to make a regular expression in Python.
+<div align="center">
+  <sub>Documentation:</sub>
+  <a href="doc/pt-br.md">
+    <span>:brazil:</span>    
+  </a>
+</div>
+
+This a simple package to make regular expression in Python.
 
 ```bash
 pip install mre

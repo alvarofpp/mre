@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mre
-Version: 0.8.1
+Version: 0.8.3
 Summary: Maker Regular Expressions
 Home-page: https://github.com/alvarofpp/mre
 Author: Álvaro Ferreira Pires de Paiva
@@ -11,7 +11,14 @@ Description: # Maker Regular Expression
           <img alt="PyPI" src="https://img.shields.io/pypi/v/mre.svg">
         </a>
         
-        This a simple package to make a regular expression in Python.
+        <div align="center">
+          <sub>Documentation:</sub>
+          <a href="doc/pt-br.md">
+            <span>:brazil:</span>    
+          </a>
+        </div>
+        
+        This a simple package to make regular expression in Python.
         
         ```bash
         pip install mre
