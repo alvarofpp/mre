@@ -2,7 +2,7 @@ from mre import Regex, Set
 from mre.helper import Range
 
 digits_one = Regex("[0-9]")
-digits_two = Set(Range().numbers())
+digits_two = Set(Range().digits())
 
 # [0-9]
 assert digits_one == digits_two

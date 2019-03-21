@@ -17,11 +17,11 @@ class Group(Regex):
 
         super().__init__(regex)
 
-    def get(self):
+    def get(self) -> str:
         """Return regex."""
         return "({})".format(self.rgx)
 
-    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
+    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> Regex:
         """Quantify the regex."""
         rgx_old = self.rgx
         self.rgx = self.get()

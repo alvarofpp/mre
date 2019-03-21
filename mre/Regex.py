@@ -59,11 +59,11 @@ class Regex(ABC):
 
         return rgx
 
-    def get(self):
+    def get(self) -> str:
         """Return regex."""
         return self.rgx
 
-    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False):
+    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> 'Regex':
         """Quantify the regex."""
         rgx = self.rgx
         if n == 0 and m == 1:
@@ -82,7 +82,7 @@ class Regex(ABC):
 
         return Regex(rgx)
 
-    def backreferences(self, group_n: int = 1):
+    def backreferences(self, group_n: int = 1) -> 'Regex':
         """Back reference to a group."""
         return Regex(self.rgx, "\\{}".format(group_n))
 

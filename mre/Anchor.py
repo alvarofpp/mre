@@ -14,6 +14,6 @@ class Anchor(Regex):
             self.last = "$"
         super().__init__(regex)
 
-    def get(self):
+    def get(self) -> str:
         """Return regex."""
         return "{}{}{}".format(self.first, self.rgx, self.last)
