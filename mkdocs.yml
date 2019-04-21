@@ -1,0 +1,14 @@
+site_name: Maker Regular Expression
+site_url: https://github.com/alvarofpp/mre
+site_description: This a simple package to make regular expression in Python.
+site_author: MkDocs Team
+
+nav:
+    - Instalação: index.md
+    - Guia de uso: guia-de-uso.md
+    - Sobre: sobre.md
+    - Licença: licenca.md
+
+repo_url: https://github.com/alvarofpp/mre
+
+theme: readthedocs
