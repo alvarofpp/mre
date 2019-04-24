@@ -18,3 +18,15 @@ pip install mre
 
 - Test regex: [Regex101](https://regex101.com/);
 - [Regular expression operations](https://docs.python.org/3/library/re.html).
+
+## Contributing documentation
+
+```python
+pip install -r requirements-dev.txt
+```
+Running documentation
+
+```python
+mkdocs serve
+```
+Change or create files in the `docs` folder.

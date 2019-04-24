@@ -1,6 +1,3 @@
-# MRE
-Um pacote em Python para fazer expressão regular (RegEx). Possui o objetivo de transformar a criação de um RegEx em algo mais fácil de se ler.
-
 # Classes
 
 - [Regex](#regex)
@@ -145,7 +142,7 @@ Em casos específicos, há a adição de um símbolo. Esses casos são:
 
 Além desses casos específicos, a quantificação poderá ocorrer das formas:
 - `{n}`: deve ocorrer `n` vezes;
-- `{n, m}`: pode ocorrer de `n` até `m` vezes. 
+- `{n, m}`: pode ocorrer de `n` até `m` vezes.
 
 ```python
 from mre import Regex
@@ -222,7 +219,7 @@ print(regex_set.get())  # "[0-9]"
 ```
 
 #### quantifier
-Retorna um novo objeto **Regex** com o quantificador referente ao conjunto. 
+Retorna um novo objeto **Regex** com o quantificador referente ao conjunto.
 
 ```python
 from mre import Set
@@ -273,7 +270,7 @@ print(regex_group_two.get())  # "(?:</h1>)"
 ```
 
 #### quantifier
-Retorna um novo objeto **Regex** com o quantificador referente ao grupo. 
+Retorna um novo objeto **Regex** com o quantificador referente ao grupo.
 
 ```python
 from mre import Group
