@@ -6,7 +6,7 @@
 - [Group](#group)
 - [Anchor](#anchor)
 - Helper
-  - [Range](#range)
+    - [Range](#range)
 
 ## <a name="regex">Regex</a>
 Essa é a classe pai de todas as classes do pacote, o RegEx que se está manipulando fica na variável `self.rgx`. Seu construtor pode receber qualquer quantidade de entradas, porém espera-se que sejam dos tipos: `str`, `int` e a própria classe `Regex`. Para entender melhor:
