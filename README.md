@@ -5,7 +5,7 @@
 
 <div align="center">
   <sub>Documentation:</sub>
-  <a href="doc/pt-br.md">
+  <a href="https://alvarofpp.github.io/mre/">
     <span>:brazil:</span>    
   </a>
 </div>
@@ -21,12 +21,12 @@ pip install mre
 
 ## Contributing documentation
 
-```python
+```bash
 pip install -r requirements-dev.txt
 ```
 Running documentation
 
-```python
+```bash
 mkdocs serve
 ```
 Change or create files in the `docs` folder.
