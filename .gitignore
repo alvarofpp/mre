@@ -2,6 +2,9 @@
 venv/*
 dist/*
 build/*
-mre/__pycache__/*
-mre/helper/__pycache__/*
+*/__pycache__/*
+*/*/__pycache__/*
 site/*
+# Egg metadata
+*.egg-info
+
