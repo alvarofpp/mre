@@ -2,7 +2,7 @@ import unittest
 from mre import Regex, Quantifier, Anchor
 
 
-class TestSet(unittest.TestCase):
+class TestAnchor(unittest.TestCase):
     def setUp(self):
         """Inicia novo objeto em todo os testes.
         """
