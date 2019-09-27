@@ -285,7 +285,7 @@ print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
 ## <a name="anchor">Anchor</a>
-This class respresents an achnored RegEx (the RegEx must start and end as defined). The constructor has two parameters:
+This class respresents an anchored RegEx (the RegEx must start and end as defined). The constructor has two parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
@@ -321,7 +321,7 @@ print(regex_anchor_two.get())  # "\b<h1>Hello world</h1>\B"
 ```
 
 ## <a name="range">helper.Range</a>
-This class is intended to assist in creating a RegEx that indicates a character class from a *range*. The constructor has two parameters:
+This class is intended to assist in creating a RegEx that indicates a character class in form of a *range*. The constructor has two parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
@@ -343,7 +343,7 @@ print(letters)  # "A-z"
 ```
 
 ### Methods
-This class inherits the methods of the ** Regex ** class and has its own methods.
+This class inherits the methods of the **Regex** class and has its own methods.
 
 #### digits
 Has two parameters:
@@ -424,7 +424,7 @@ from mre.helper import Range
 
 # all digits [0-9]
 digits = Set(Range().digits())
-# The hyphen may appear zero or one times
+# the hyphen may appear zero or one times
 hyphen = Quantifier("-", 0, 1)
 
 rgx_cep = Regex(
@@ -442,7 +442,7 @@ from mre.helper import Range
 all_digits = Set(Range(0, 9))
 # the dot may appear zero or one times
 dot = Regex(Regex.DOT).quantifier(0, 1)
-# The hyphen may appear zero or one times
+# the hyphen may appear zero or one times
 hyphen = Regex('-').quantifier(0, 1)
 
 rgx_cpf = Regex(
@@ -463,7 +463,7 @@ digits = Regex(Regex.DIGIT)
 dot = Regex(Regex.DOT).quantifier(0, 1)
 # the slash may appear zero or one times
 slash = Regex(Regex.SLASH).quantifier(0, 1)
-# The hyphen may appear zero or one times
+# the hyphen may appear zero or one times
 hyphen = Quantifier("-", 0, 1)
 
 rgx_cnpj = Regex(
