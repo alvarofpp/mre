@@ -17,7 +17,33 @@ pip install mre
   <a href="https://alvarofpp.github.io/mre/">
     <span>:brazil:</span>    
   </a>
-  
+
+## Examples
+```py
+from mre import Regex, Group
+
+rgx_one = Regex("Hello world")  # Hello world
+rgx_two = Regex("Hello", " world")  # Hello world
+rgx_three = Regex("Hello") + " " + Regex("world")  # Hello world
+rgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>
+rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
+```
+
+```py
+from mre import Regex, Set
+
+# All digits
+digits = Set(Regex("0-9"))
+
+rgx_cep = Regex(
+    digits.quantifier(5),
+    Regex("-").quantifier(0, 1),
+    digits.quantifier(3),
+)
+
+# Output: [0-9]{5}-?[0-9]{3}
+```
+
 ## Contributing documentation
 
 ```bash
