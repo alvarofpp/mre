@@ -404,7 +404,8 @@ print(regex_range_six)  # "a-z"
 
 # Examples
 
-2 ways to create a RegEx of **CEP** (`[0-9]{5}-?[0-9]{3}`)
+2 ways to create a RegEx for a **CEP** (`[0-9]{5}-?[0-9]{3}`):
+(CEP is the brazilian postal code)
 ```python
 from mre import Regex, Set
 
@@ -433,7 +434,8 @@ rgx_cep = Regex(
 )
 ```
 
-RegEx of **CPF** (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
+RegEx for a **CPF** (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
+(CPF is a brazilian tax payer registry number)
 ```python
 from mre import Regex, Set
 from mre.helper import Range
@@ -453,7 +455,8 @@ rgx_cpf = Regex(
 )
 ```
 
-RegEx of **CNPJ** (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
+RegEx for a **CNPJ** (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
+(CNPJ is a identification number in the brazilian National Registry of Legal Entities)
 ```python
 from mre import Regex, Quantifier
 
