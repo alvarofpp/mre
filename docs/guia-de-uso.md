@@ -284,6 +284,28 @@ print(type(regex_group))  # <class 'mre.Group.Group'>
 print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
+## <a name="lookahead">Lookahead</a>
+Esta classe representa uma instrução lookahead em uma regex. Seu construtor recebe 2 parâmetros:
+
+| Parâmetro | Tipo | Valor padrão |
+| --------- | ---- | ------------ |
+| `regex` | `str`, `int`, `Regex` | `""` |
+| `must_not_include` | `bool` | `False` |
+
+Se o argumento para `must_not_include` for` True`, serão adicionados símbolos que indicam que * RegEx Engine * deve afirmar que o valor do lookahead existe após o símbolo atual (`?=`).
+Se o argumento para `must_not_include` for` False`, serão adicionados símbolos que indicam que * RegEx Engine * deve afirmar que o valor do lookahead existe antes do símbolo atual (`?!`).
+
+
+```python
+from mre import Lookahead
+
+regex_lookahead_one = Lookahead('liquid') + " cooling"
+regex_lookahead_two = Lookahead('liquid', True) + " cooling"
+
+print(regex_lookahead_one)  # (?=liquid) cooling
+print(regex_lookahead_two)  # (?!liquid) cooling
+```
+
 ## <a name="anchor">Anchor</a>
 Essa classe representa um RegEx com âncora (o RegEx deve começar e terminar como foi definido). Seu construtor recebe 2 parâmetros:
 

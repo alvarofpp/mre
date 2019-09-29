@@ -3,3 +3,4 @@ from .Quantifier import Quantifier
 from .Set import Set
 from .Group import Group
 from .Anchor import Anchor
+from .Lookaround import Lookahead
