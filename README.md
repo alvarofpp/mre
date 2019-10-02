@@ -17,8 +17,11 @@ pip install mre
 - <a href="https://alvarofpp.github.io/mre/de">
     de <span>:de:</span>
   </a>
-- <a href="https://alvarofpp.github.io/mre/en">
-    en <span>:us:</span>
+- <a href="https://alvarofpp.github.io/mre/dk">
+    dk <span>:denmark:</span>
+  </a>
+- <a href="https://alvarofpp.github.io/mre/en_US">
+    en-US <span>:us:</span>
   </a>
 - <a href="https://alvarofpp.github.io/mre/es_ES">
     es-ES <span>:es:</span>
