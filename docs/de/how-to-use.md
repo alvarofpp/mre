@@ -287,7 +287,7 @@ print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ## <a name="anchor">Anchor</a>
 Diese Klasse repräsentiert ein verankerten regulären Ausdruck (Der RegEx muss beginnen und enden wie definiert). Der Konstruktor hat zwei Parameter:
 
-| Parameter | Typ | dStandardwert |
+| Parameter | Typ | Standardwert |
 | --------- | ---- | ------------ |
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `negate` | `bool` | `False` |
@@ -321,14 +321,14 @@ print(regex_anchor_two.get())  # "\b<h1>Hello world</h1>\B"
 ```
 
 ## <a name="range">helper.Range</a>
-This class is intended to assist in creating a RegEx that indicates a character class in form of a *range*. The constructor has two parameters:
+Diese Klasse dient dazu zu bei der Erstellung eines RegEx zu helfen, welches die die Zeichenklasse in Form einer *range* darstellt. Der Konstruktor hat zwei Parameter:
 
-| Parameter | Type | default value |
+| Parameter | Typ | Standardwert |
 | --------- | ---- | ------------ |
 | `minimum` | `str`, `int` | `0` |
 | `maximum` | `str`, `int` | `"z"` |
 
-Ideally you should use this class together with a **Set**. Within a **Set** the hyphen has a "magic" value, that allows it to assign a range. Outside of a set a hyphen has only the hyphen value. So if you want lowercase letters, you should use `[a-z]` instead of `a-z`. `a-z` indicates you only want the values `a`, `-` and `z`.
+Idealerweise solltest du die Klasse zusammen mit einem **Set** nutzen. In einem **Set** hat der Bindestrich einen "magischen" Wert, welcher erlaubt eine Spanne zuzuweisen. Außerhalb eines Sets hat der Bindestrich nur den Bindesstrichwert. Wenn du also kleingeschriebene Buchstaben möchtest, solltest du `[a-z]` statt `a-z` nutzen. `a-z` zeigt nur an, dass du die Zeichen `a`, `-` und `z` möchtest.
 
 ```python
 from mre.helper import Range
@@ -342,18 +342,18 @@ print(digits)  # "0-9"
 print(letters)  # "A-z"
 ```
 
-### Methods
-This class inherits the methods of the **Regex** class and has its own methods.
+### Methoden
+Diese Klasse erbt die Methoden der Klasse **Regex** und hat ihre eigenen Methoden.
 
 #### digits
-Has two parameters:
+Hat zwei Parameter:
 
-| Parameter | Type | default value |
+| Parameter | Typ | Standardwert |
 | --------- | ---- | ------------ |
 | `minimum` | `int` | `0` |
 | `maximum` | `int` | `9` |
 
-Returns a *range* that is defined as the digits between `minimum` and `maximum`.
+Gibt eine Spanne(*range*) zurück, welche durch die Ziffern zwischen `minimum` und `maximum` definiert ist.
 
 ```python
 from mre.helper import Range
@@ -370,16 +370,16 @@ print(regex_range_four)  # "0-6"
 ```
 
 #### letters
-Has four parameters:
+Hat vier Parameter:
 
-| Parameter | Type | default value |
+| Parameter | Typ | Standard Wert |
 | --------- | ---- | ------------ |
 | `minimum` | `chr` | `A` |
 | `maximum` | `chr` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 
-Returns a *range* that is defined as the letters between `minimum` and `maximum`.
+Gibt eine Spanne (*range*) zrück, welche den Zwichen zwischen `minimum` und `maximum` entspricht.
 
 ```python
 from mre.helper import Range
@@ -433,7 +433,7 @@ rgx_cep = Regex(
 )
 ```
 
-RegEx for a **CPF** (Brasilianische Steuernummer) (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
+RegEx für eine **CPF** (Brasilianische Steuernummer) (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
 
 ```python
 from mre import Regex, Set
@@ -454,7 +454,7 @@ rgx_cpf = Regex(
 )
 ```
 
-RegEx für ein **CNPJ** (ID in der brasilianischen Datenbank für rechtliche Personen ) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
+RegEx für eine **CNPJ** (ID in der brasilianischen Datenbank für rechtliche Personen ) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
 
 ```python
 from mre import Regex, Quantifier
