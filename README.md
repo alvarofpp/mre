@@ -14,8 +14,11 @@ pip install mre
 
 
 <span>Documentation:</span>
-  <a href="https://alvarofpp.github.io/mre/">
-    <span>:brazil:</span>    
+- <a href="https://alvarofpp.github.io/mre/en">
+    en <span>:us:</span>
+  </a>
+- <a href="https://alvarofpp.github.io/mre/pt_BR">
+    pt-br <span>:brazil:</span>
   </a>
 
 ## Examples
