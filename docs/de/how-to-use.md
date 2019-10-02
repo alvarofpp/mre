@@ -12,10 +12,10 @@
 Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable `self.rgx` verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ `str`, `int` oder der `Regex` Klasse selber sein. Zum besseren Verständnis:
 
 - `str`: wird an die Variable `self.rgx` angehangen;
-- `int`: führt eine [*backreferences*](https://www.regular-expressions.info/backref.html); aus
+- `int`: führt eine [*backreferences*](https://www.regular-expressions.info/backref.html) aus
 - `Regex`: fügt den Wert von `self.rgx` des übergebenen Objektes zu der Variable `self.rgx` des empfangenen Objektes hinzu.
 
-Ways to declare a **Regex**:
+Wege zur Dekleration eines **Regex**:
 ```python
 from mre import Regex, Group
 
@@ -26,10 +26,10 @@ rgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>
 rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 ```
 
-### Constants
-Constants available in class **Regex**:
+### Konstanten
+Verfügbare Konstanten in der **Regex** Klasse:
 
-| Constant | Value |
+| Konstante | Wert |
 | --------- | ----- |
 | `ANY` | `.` |
 | `DOT` | `\\.` |
@@ -45,11 +45,11 @@ Constants available in class **Regex**:
 | `ONE_OR_MULTIPLE` | `+` |
 | `HYPHEN` | `\\-` |
 
-### Methods
-Descriptions of methods and overloads.
+### Methoden
+Beschreibung der Methoden und der Überladungen.
 
 #### \_\_str\_\_
-Returns the value stored in `self.rgx`.
+Gibt den Wert, welchen in der variable `self.rgx` gespeichert ist zurück.
 
 ```python
 from mre import Regex
@@ -59,9 +59,9 @@ print(regex)  # "Hello world"
 ```
 
 #### \_\_eq\_\_
-Comparisons are possible with `str` and `Regex` type:
-- `== str`: compares `self.rgx` to the value of the passed variable;
-- `== Regex`: compares `self.rgx` (accessed via method **get**) to the value of `self.rgx` of the passed object (also accessed via method **get**).
+Vergleiche sind möglich zwischen den Typen `str` und `Regex`:
+- `== str`: vergleicht `self.rgx` mit dem Wert der übergebenen Variable.
+- `== Regex`: vergleicht `self.rgx` (Zugriff über die Methode **get**) mit der Variable `self.rgx` des übergebenen Objektes (ebenfalls mittels der Methode **get**).
 
 ```python
 from mre import Regex
@@ -76,12 +76,12 @@ print(regex_one == Regex("Hello world!"))  # False
 ```
 
 #### \_\_iadd\_\_
-Expects variables of type `str` and `Regex`. For better understanding:
+Erwarted eine Variable vom Typ `str` oder `Regex`. Für das bessere Verständnis:
 
-- `+= str`: concatenates `self.rgx` with the value of the passed variable;
-- `+= Regex`: concatenates `self.rgx` with the value of variable `self.rgx` of the passed object (accessed via method **get**).
+- `+= str`: fügt der Variable `self.rgx` den Wert des übergebenen Strings hinzu;
+- `+= Regex`: fügt der Variable  `self.rgx` den Wert der Variable `self.rgx` des übergebenen Objektes (Zugriff mittels der Methode **get**).
 
-The overload directly changes the value of `self.rgx`. In case of operations like **Set** of an object, it will change to the value between to brackets.
+Die Überladung ändert direkt den Wert der Variable `self.rgx`. Im Falle einer Operation wie **Set** des Objektes, wird der Wert auf den Wert zwischen den Klammern gesetzt.
 
 ```python
 from mre import Regex, Set
