@@ -9,11 +9,11 @@
     - [Range](#range)
 
 ## <a name="regex">Regex</a>
-This is the parent class of all other classes in this package, the RegEx is being handled in variable `self.rgx`. Your constructor can receive any number of inputs, but they require the following types: `str`, `int` and the `Regex` class itself. For better understanding:
+Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable `self.rgx` verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ `str`, `int` oder der `Regex` Klasse selber sein. Zum besseren Verständnis:
 
-- `str`: concatenates to variable `self.rgx`;
-- `int`: performs [*backreferences*](https://www.regular-expressions.info/backref.html);
-- `Regex`: concatenates the value of `self.rgx` of the passed object to variable `self.rgx` of the receiving object.
+- `str`: wird an die Variable `self.rgx` angehangen;
+- `int`: führt eine [*backreferences*](https://www.regular-expressions.info/backref.html); aus
+- `Regex`: fügt den Wert von `self.rgx` des übergebenen Objektes zu der Variable `self.rgx` des empfangenen Objektes hinzu.
 
 Ways to declare a **Regex**:
 ```python
