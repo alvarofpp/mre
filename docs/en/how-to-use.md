@@ -456,8 +456,6 @@ rgx_cpf = Regex(
 
 RegEx for a **CNPJ** (ID in the brazilian National Registry of Legal Entities) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
 
-
-
 ```python
 from mre import Regex, Quantifier
 
