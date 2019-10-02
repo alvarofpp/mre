@@ -10,7 +10,7 @@
 
 ## <a name="regex">Regex</a>
 
-Dette er forældreklassen til alle andre klasser i denne pakke. RegEx'et håndteres i variablen `self.rgx`. Din konstruktør kan modtage et hvilket som helst antal af inputs, men de skal være af en af følgende typer: `str`, `int` eller `Regex`-klassen selv. For bedre forståelse:
+Dette er forældreklassen til alle andre klasser i denne pakke. RegEx'et håndteres i variablen `self.rgx`. Konstruktøren kan modtage et hvilket som helst antal af argumenter, men de skal være af en af følgende typer: `str`, `int` eller `Regex`-klassen selv. For bedre forståelse:
 
 - `str`: konkatenerer til variablen `self.rgx`;
 - `int`: laver [*backreferences*](https://www.regular-expressions.info/backref.html);
@@ -68,7 +68,7 @@ print(regex)  # "Hello world"
 Sammenligninger er mulige mellem typerne `str` og `Regex`:
 
 - `== str`: sammenligner `self.rgx` med værdien af den videregivne variabel;
-- `== Regex`: sammenligner `self.rgx` (tilgået via metoden **get**) med værdien af `self.rgx` for det videregivne objekt (også tilgået via metoden **get**).
+- `== Regex`: sammenligner `self.rgx` (tilgået via **get**-metoden) med værdien af `self.rgx` for det videregivne objekt (også tilgået via **get**-metoden).
 
 ```python
 from mre import Regex
@@ -87,7 +87,7 @@ print(regex_one == Regex("Hello world!"))  # False
 Forventer variable af typerne `str` og `Regex`. For bedre forståelse:
 
 - `+= str`: konkatenerer `self.rgx` med værdien af den videregivne variabel;
-- `+= Regex`: konkatenerer `self.rgx` med værdien af variablen `self.rgx` for det videregivne objekt (tilgået via metoden **get**).
+- `+= Regex`: konkatenerer `self.rgx` med værdien af variablen `self.rgx` for det videregivne objekt (tilgået via **get**-metoden).
 
 Overloadet ændrer direkte værdien af `self.rgx`. I tilfælde af operationer som **Set** af et objekt, vil det ændres til værdien indsat mellem to brackets.
 
@@ -107,8 +107,8 @@ print(regex_set)  # "[Hello world]"
 
 Forventer variable af typerne `str` og `Regex`. I modsætning til overloadet af **\_\_iadd\_\_**, returnerer dette overload et nyt **Regex**-objekt.
 
-- `+ str`: konkatenerer `self.rgx` (tilgået via metoden **get**) med værdien af den videregivne variabel;
-- `+ Regex`: konkatenerer `self.rgx` (tilgået via metoden **get**) med værdien af `self.rgx` for det videregivne objekt (også tilgået via metoden **get**).
+- `+ str`: konkatenerer `self.rgx` (tilgået via **get**-metoden) med værdien af den videregivne variabel;
+- `+ Regex`: konkatenerer `self.rgx` (tilgået via **get**-metoden) med værdien af `self.rgx` for det videregivne objekt (også tilgået via **get**-metoden).
 
 ```python
 from mre import Regex
@@ -170,7 +170,7 @@ print(digits.quantifier(1, without_maximum=True))  # "[0-9]+"
 
 #### backreferences
 
-Har et parameter af typen `int` (`group_n`), som bruges til at indikere hvilken gruppe du vil bruge til at lave en *backreference*. Returnerer et **Regex**, som laver [*backreferences*](https://www.regular-expressions.info/backref.html) af den indikerede gruppe.
+Har et parameter af typen `int` (`group_n`), som bruges til at angive hvilken gruppe du vil bruge til at lave en *backreference*. Returnerer et **Regex**, som laver [*backreferences*](https://www.regular-expressions.info/backref.html) af den angivne gruppe.
 
 En alternativ måde at kalde denne metode på er ved at give en `int` til konstruktøren.
 
@@ -186,7 +186,7 @@ print(regex_two)  # "\2"
 
 ## <a name="quantifier">Quantifier</a>
 
-Denne klasse fungerer som et alternativ til at kalde **Regex.quantifier**. Konstruktøren har 4 parametre:
+Denne klasse fungerer som et alternativ til at kalde **Regex.quantifier**. Konstruktøren har fire parametre:
 
 | Parameter | Type | Standardværdi |
 | --------- | ---- | ------------ |
