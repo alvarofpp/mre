@@ -1,9 +1,10 @@
 # MRE
-A Python package to make regular expression (RegEx). Its purpose is to make creating a RegEx something easier to read.
 
-## Instalação do MRE
+En Python-pakke til at lave regulære udtryk (RegEx). Pakkens formål er at gøre det mere letlæseligt at lave RegEx.
 
-Install the MRE package using pip:
+## Installering af MRE
+
+Installer MRE-pakken ved brug af pip:
 
 ```Python
 pip install mre
