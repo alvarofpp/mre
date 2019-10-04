@@ -16,4 +16,7 @@ class Anchor(Regex):
 
     def get(self) -> str:
         """Return regex."""
+        if self.rgx_comment is not None:
+            return "{}{}{}".format(self.first, self.rgx, self.last) + self.rgx_comment.get()
+
         return "{}{}{}".format(self.first, self.rgx, self.last)

@@ -10,6 +10,9 @@ class Set(Regex):
 
     def get(self) -> str:
         """Return regex."""
+        if self.rgx_comment is not None:
+            return "[{}]".format(self.rgx) + self.rgx_comment.get()
+        
         return "[{}]".format(self.rgx)
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> Regex:
