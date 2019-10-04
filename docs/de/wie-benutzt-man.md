@@ -9,7 +9,7 @@
     - [Range](#range)
 
 ## <a name="regex">Regex</a>
-Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable `self.rgx` verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ `str`, `int` oder der `Regex` Klasse selber sein. Zum besseren Verständnis:
+Dies ist die Elternklasse von allen anderen Klassen in diesem Paket. Der reguläre Ausdruck wird in der Variable `self.rgx` verarbeitet. Der Konstruktor kann eine beliebige Anzahl an parametern erhalten, welche aber alle vom Typ `str`, `int` oder der `Regex` Klasse selber sein müssen. Zum besseren Verständnis:
 
 - `str`: wird an die Variable `self.rgx` angehangen;
 - `int`: führt eine [*backreferences*](https://www.regular-expressions.info/backref.html) aus
@@ -49,7 +49,7 @@ Verfügbare Konstanten in der **Regex** Klasse:
 Beschreibung der Methoden und der Überladungen.
 
 #### \_\_str\_\_
-Gibt den Wert, welchen in der variable `self.rgx` gespeichert ist zurück.
+Gibt den Wert, welcher in der Variable `self.rgx` gespeichert ist zurück.
 
 ```python
 from mre import Regex
@@ -112,7 +112,7 @@ print(regex_two)  # "Hello world"
 ```
 
 #### get
-Gibt den Wert, welcher in `self.rgx` gespeichert ist zurück.
+Gibt den Wert, welcher in `self.rgx` gespeichert ist, zurück.
 
 ```python
 from mre import Regex
@@ -132,7 +132,7 @@ Hat folgende Parameter:
 
 Benutzt um festzulegen, wie häufig ein regulärer Ausdruck auftreten sollte (von `n` nach `m`). Gibt ein neues **Regex** Objekt zurück.
 
-In besonderen Fällen, wird ein Zeichen hinzugefügt. Diese Fälle sind:
+In besonderen Fällen wird ein Zeichen hinzugefügt. Diese Fälle sind:
 
 | n | m | without_maximum | Zeichen | Zugriff |
 | --- | --- | --------------- | ------- | ------ |
@@ -140,7 +140,7 @@ In besonderen Fällen, wird ein Zeichen hinzugefügt. Diese Fälle sind:
 | `0` | - | `True` | `*` | `Regex.ZERO_OR_MULTIPLE` |
 | `1` | - | `True` | `+` | `Regex.ONE_OR_MULTIPLE` |
 
-Zusätzlich zu diesen besonderen Fällen, die Quantifikation kann wie folgt auftreten:
+Zusätzlich zu diesen besonderen Fällen, kann die Quantifikation wie folgt auftreten:
 - `{n}`: sollte `n` mal auftreten;
 - `{n, m}`: kann von `n` bis zu `m` mal auftreten.
 
@@ -241,7 +241,7 @@ Diese Klasse repräsentiert eine Gruppe in RegEx. Der Konstruktor hat zwei Param
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `non_capturing` | `bool` | `False` |
 
-Wenn der Ausdruck für `non_capturing` `True` ist, das Zeichen, welches die *RegEx Engine* anzeigt wird der Non-Captured-Gruppe hinzugefügt (`?:`).
+Wenn der Ausdruck für `non_capturing` `True` ist, wird das Zeichen, welches die *RegEx Engine* anzeigt, wird der Non-Captured-Gruppe hinzugefügt (`?:`).
 
 ```python
 from mre import Group
@@ -285,7 +285,7 @@ print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
 ## <a name="anchor">Anchor</a>
-Diese Klasse repräsentiert ein verankerten regulären Ausdruck (Der RegEx muss beginnen und enden wie definiert). Der Konstruktor hat zwei Parameter:
+Diese Klasse repräsentiert einen verankerten regulären Ausdruck (Der RegEx muss beginnen und enden wie definiert). Der Konstruktor hat zwei Parameter:
 
 | Parameter | Typ | Standardwert |
 | --------- | ---- | ------------ |
@@ -379,7 +379,7 @@ Hat vier Parameter:
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 
-Gibt eine Spanne (*range*) zrück, welche den Zwichen zwischen `minimum` und `maximum` entspricht.
+Gibt eine Spanne (*range*) zrück, welche den Werten zwischen `minimum` und `maximum` entspricht.
 
 ```python
 from mre.helper import Range
