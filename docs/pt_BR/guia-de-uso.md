@@ -1,4 +1,10 @@
-# Classes
+# Sumário
+
+- [Classes](#classes)
+- [Comentários](#comments)
+- [Exemplos](#examples)
+
+# <a name="classes">Classes</a>
 
 - [Regex](#regex)
 - [Quantifier](#quantifier)
@@ -402,7 +408,44 @@ print(regex_range_five)  # "A-Z"
 print(regex_range_six)  # "a-z"
 ```
 
-# Exemplos
+# <a name="comments">Comentários</a>
+Existem dois modos de realizar comentários no seu Regex:
+
+1. Utilizando o método `comment`;
+1. Utilizando a classe `Comment`.
+
+**Utilizando o método**:
+```py
+from mre import Regex, Set
+
+# All digits
+digits = Set(Regex("0-9"))
+# Add comment
+digits = digits.comment('Get all digits')
+
+# Output: [0-9](?#Get all digits)
+```
+
+**Utilizando a classe**:
+```py
+from mre import Regex, Set, Comment
+
+# All digits
+digits = Set(Regex("0-9"))
+# CEP comment
+cep_comment = Comment('Get zip code Brazil on input')
+# CEP regex
+rgx_cep = Regex(
+    digits.quantifier(5),
+    Regex("-").quantifier(0, 1),
+    digits.quantifier(3),
+    cep_comment
+)
+
+# Output: [0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)
+```
+
+# <a name="examples">Exemplos</a>
 
 2 formas de fazer o RegEx de **CEP** (`[0-9]{5}-?[0-9]{3}`)
 ```python

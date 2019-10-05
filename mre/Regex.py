@@ -2,6 +2,7 @@ from abc import ABC
 from typing import Union
 from .Comment import Comment
 
+
 class Regex(ABC):
     """Base class."""
     # Metacharacter
@@ -25,19 +26,17 @@ class Regex(ABC):
     # Set
     HYPHEN = "\\-"
 
-    def __init__(self, *regexs: Union[str, int, 'Regex', 'Comment']):
+    def __init__(self, *regexs: Union[str, int, 'Regex', Comment]):
         self.rgx = ""
-        self.comment_str = ""
+        self.rgx_comment = None
 
         for regex in regexs:
             if isinstance(regex, int):
                 self.rgx = self.backreferences(regex).get()
             elif isinstance(regex, str):
                 self.rgx += regex
-            elif isinstance(regex, Regex):
-                self.rgx += regex.get()
             else:
-                self.comment_str = "(?#{})".format(regex.get())
+                self.rgx += regex.get()
 
     def __str__(self):
         """Magic method to print."""
@@ -64,7 +63,10 @@ class Regex(ABC):
 
     def get(self) -> str:
         """Return regex."""
-        return self.rgx+self.comment_str
+        if self.rgx_comment is None:
+            return self.rgx
+
+        return self.rgx + self.rgx_comment.get()
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> 'Regex':
         """Quantify the regex."""
@@ -89,14 +91,20 @@ class Regex(ABC):
         """Back reference to a group."""
         return Regex(self.rgx, "\\{}".format(group_n))
 
+    def comment(self, comment: Union[str, Comment] = "") -> 'Regex':
+        """Set comment for regex."""
+        new_regex = Regex(self.rgx)
+
+        if isinstance(comment, str):
+            new_regex.rgx_comment = Comment(comment)
+        else:
+            new_regex.rgx_comment = comment
+
+        return new_regex
+
     def _set_regex(self, regex: Union[str, 'Regex']):
         """Set regex value."""
         if isinstance(regex, Regex):
             self.rgx = regex.rgx
         else:
             self.rgx = str(regex)
-
-    def comment(self, comment_str: str = "") -> 'Regex':
-        """Set comment for regex."""
-        self.comment_str = "(?#{})".format(comment_str)
-        return self
