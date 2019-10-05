@@ -1,5 +1,6 @@
 from .Regex import Regex
 from typing import Union
+from .Comment import Comment
 
 
 class Group(Regex):
@@ -32,3 +33,14 @@ class Group(Regex):
         self.rgx = rgx_old
 
         return regex_return
+
+    def comment(self, comment: Union[str, Comment] = "") -> 'Group':
+        """Set comment for regex."""
+        new_regex = Group(self.rgx)
+
+        if isinstance(comment, str):
+            new_regex.rgx_comment = Comment(comment)
+        else:
+            new_regex.rgx_comment = comment
+
+        return new_regex

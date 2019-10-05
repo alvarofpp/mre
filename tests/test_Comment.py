@@ -1,5 +1,5 @@
 import unittest
-from mre import Regex, Comment
+from mre import Regex, Comment, Set
 
 
 class TestComment(unittest.TestCase):
@@ -34,3 +34,11 @@ class TestComment(unittest.TestCase):
         )
 
         self.assertTrue(rgx_cep == "[0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)")
+
+    def test_Set_comment(self):
+        # All digits
+        digits = Set(Regex("0-9"))
+        # Add comment
+        digits = digits.comment('Get all digits')
+
+        self.assertTrue(digits == "[0-9](?#Get all digits)")
