@@ -9,11 +9,11 @@
     - [Range](#range)
 
 ## <a name="regex">Regex</a>
-This is the parent class of all other classes in this package, the RegEx is being handled in variable `self.rgx`. Your constructor can receive any number of inputs, but they require the following types: `str`, `int` and the `Regex` class itself. For better understanding:
+This is the parent class of all other classes in this package. The RegEx is handled in the variable `self.rgx`. Your constructor can receive any number of inputs, but they require the following types: `str`, `int` and the `Regex` class itself. To further explain:
 
 - `str`: concatenates to variable `self.rgx`;
 - `int`: performs [*backreferences*](https://www.regular-expressions.info/backref.html);
-- `Regex`: concatenates the value of `self.rgx` of the passed object to variable `self.rgx` of the receiving object.
+- `Regex`: concatenates the value of `self.rgx` of the passed object to the variable `self.rgx` of the receiving object.
 
 Ways to declare a **Regex**:
 ```python
@@ -59,7 +59,7 @@ print(regex)  # "Hello world"
 ```
 
 #### \_\_eq\_\_
-Comparisons are possible with `str` and `Regex` type:
+Comparisons are possible with `str` and `Regex` types:
 - `== str`: compares `self.rgx` to the value of the passed variable;
 - `== Regex`: compares `self.rgx` (accessed via method **get**) to the value of `self.rgx` of the passed object (also accessed via method **get**).
 
