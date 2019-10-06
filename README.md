@@ -3,7 +3,7 @@
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mre.svg">
 </a>
 
-This a simple package to make regular expression in Python.
+This is a simple package to make regular expressions in Python.
 
 ```bash
 pip install mre
