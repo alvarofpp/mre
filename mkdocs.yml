@@ -5,9 +5,9 @@ site_author: MkDocs Team
 
 nav:
   - Home: index.md
+  - 'da-DK': da_DK/
   - 'de': de/
-  - 'dk': dk/
-  - 'en': en_US/
+  - 'en-US': en_US/
   - 'es-ES': es_ES/
   - 'pt-BR': pt_BR/
   - 'uk-UA': uk_UA/
