@@ -29,6 +29,9 @@ pip install mre
 - <a href="https://alvarofpp.github.io/mre/pt_BR">
     pt-BR <span>:brazil:</span>
   </a>
+- <a href="https://alvarofpp.github.io/mre/uk_UA">
+    uk-UA <span>:ukraine:</span>
+  </a>
 
 ## Examples
 ```py
