@@ -1,4 +1,4 @@
-# clase
+# Classes
 
 - [Regex](#regex)
 - [Quantifier](#quantifier)
@@ -6,17 +6,16 @@
 - [Group](#group)
 - [Anchor](#anchor)
 - Helper
-- [Range](#range)
+    - [Range](#range)
 
 ## <a name="regex">Regex</a>
+This is the parent class of all other classes in this package. The RegEx is handled in the variable `self.rgx`. Your constructor can receive any number of inputs, but they require the following types: `str`, `int` and the `Regex` class itself. To further explain:
 
-Aceasta este clasa părinte a tuturor celorlalte clase din acest pachet. Expresia regulată este procesată în variabila „self.rgx`. Constructorul poate avea orice număr de parametri, dar toate au tipul „str`,` int` sau clasa `Regex` în sine. Pentru o mai bună înțelegere:
-- `str`: додається до змінної` self.rgx`
-- `int`: виконує [*backreferences*](https://www.regular-expressions.info/backref.html)
-- `Regex`: додає значення` self.rgx` даного об'єкта до змінної `self.rgx` отриманого об'єкта
+- `str`: concatenates to variable `self.rgx`;
+- `int`: performs [*backreferences*](https://www.regular-expressions.info/backref.html);
+- `Regex`: concatenates the value of `self.rgx` of the passed object to the variable `self.rgx` of the receiving object.
 
-
-Modalități de a declara o expresie obișnuită  **Regex**:
+Ways to declare a **Regex**:
 ```python
 from mre import Regex, Group
 
@@ -27,10 +26,10 @@ rgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>
 rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 ```
 
-### constante
-Доступні константи класу **Regex**:
+### Constants
+Constants available in class **Regex**:
 
-| Константа | Значення |
+| Constant | Value |
 | --------- | ----- |
 | `ANY` | `.` |
 | `DOT` | `\\.` |
@@ -46,11 +45,11 @@ rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 | `ONE_OR_MULTIPLE` | `+` |
 | `HYPHEN` | `\\-` |
 
-### metode
-Опис методів і перевантажень.
+### Methods
+Descriptions of methods and overloads.
 
 #### \_\_str\_\_
-Повертає значення, що зберігається в змінній `self.rgx`.
+Returns the value stored in `self.rgx`.
 
 ```python
 from mre import Regex
@@ -60,9 +59,9 @@ print(regex)  # "Hello world"
 ```
 
 #### \_\_eq\_\_
-Sunt posibile comparații între tipuri`str` та` Regex`:
-- `== str`: порівнює` self.rgx` зі значенням переданої змінної.
-- `== Regex`: порівнює `self.rgx` (Доступ через метод **get**) зі змінною `self.rgx` переданого об'єкта (також методом **get**).
+Comparisons are possible with `str` and `Regex` types:
+- `== str`: compares `self.rgx` to the value of the passed variable;
+- `== Regex`: compares `self.rgx` (accessed via method **get**) to the value of `self.rgx` of the passed object (also accessed via method **get**).
 
 ```python
 from mre import Regex
@@ -77,13 +76,12 @@ print(regex_one == Regex("Hello world!"))  # False
 ```
 
 #### \_\_iadd\_\_
-Очікує змінну типу `str` або` Regex`. Для кращого розуміння:
+Expects variables of type `str` and `Regex`. For better understanding:
 
-- `+ = str`: об'єднує значення переданого рядка до змінної` self.rgx`;
-- `+ = Regex`: об'єднує змінну` self.rgx` та змінну `self.rgx` даного об'єкта (доступ за допомогою методу **get**).
+- `+= str`: concatenates `self.rgx` with the value of the passed variable;
+- `+= Regex`: concatenates `self.rgx` with the value of variable `self.rgx` of the passed object (accessed via method **get**).
 
-
-O suprasarcină schimbă direct valoarea variabilei „self.rgx`. În cazul unei operații precum ** Set ** un obiect, valoarea este setată între paranteze.
+The overload directly changes the value of `self.rgx`. In case of operations like **Set** of an object, it will change to the value between to brackets.
 
 ```python
 from mre import Regex, Set
@@ -98,10 +96,10 @@ print(regex_set)  # "[Hello world]"
 ```
 
 #### \_\_add\_\_
-Очікує змінну типу `str` або` Regex`. На відміну від перевантаження **\_\_iadd\_\_**, це перевантаження повертає новий **Regex** об'єкт.
+Expects variables of type `str` and `Regex`. Unlike the overload of **\_\_iadd\_\_**, this overload returns a new **Regex** object.
 
-- `+ str`: об'єднує значення переданого рядка до змінної `self.rgx` (доступ за допомогою методу **get**);
-- `+ Regex`: об'єднує змінну `self.rgx` (доступ за допомогою методу  **get**) та значення змінної `self.rgx` переданого об'єкта (також доступ за допомогою методу **get**).
+- `+ str`: concatenates `self.rgx` (accessed via method **get**) with the value of the passed variable;
+- `+ Regex`: concatenates `self.rgx` (accessed via method **get**) with the value of `self.rgx` of the passed object (also accessed via method **get**).
 
 ```python
 from mre import Regex
@@ -114,7 +112,7 @@ print(regex_two)  # "Hello world"
 ```
 
 #### get
-Повертає значення, збережене в `self.rgx`.
+Returns the value stored in `self.rgx`.
 
 ```python
 from mre import Regex
@@ -124,29 +122,27 @@ print(regex.get())  # "stored value"
 ```
 
 #### quantifier
-Має такі параметри:
+Has the following parameters:
 
-| Параметр | Тип | Стандартне значення |
+| Parameter | Type | Default value |
 | --------- | ---- | ------------ |
 | `n` | `int` | `0` |
 | `m` | `int` | `0` |
 | `without_maximum` | `bool` | `False` |
 
-Використовується для кількісної оцінки того, як часто має з’являтися регулярний вираз (від `n` до` m`). Повертає новий об’єкт **Regex**.
+Used to quantify how often a Regex may/should appear (from `n` to `m`). Returns a new **Regex**.
 
+In specific cases, a symbol is added. These cases are:
 
-În cazuri speciale, se adaugă un simbol. Acestea sunt următoarele cazuri:
-
-| n | m | without_maximum | Символ | Доступ |
+| n | m | without_maximum | Symbol | Access |
 | --- | --- | --------------- | ------- | ------ |
 | `0` | `1` | - | `?` | `Regex.ZERO_OR_ONE` |
 | `0` | - | `True` | `*` | `Regex.ZERO_OR_MULTIPLE` |
 | `1` | - | `True` | `+` | `Regex.ONE_OR_MULTIPLE` |
 
-
-Pe lângă aceste cazuri speciale, cuantificarea poate fi următoarea:
-- `{n}`: має відбутися `n` разів;
-- `{n, m}`: може відбуватися від `n` до `m` разів.
+In addition to these specific cases, quantification may occur as follows:
+- `{n}`: should occur `n` times;
+- `{n, m}`: may occur from `n` up to `m` times.
 
 ```python
 from mre import Regex
@@ -161,10 +157,9 @@ print(digits.quantifier(1, without_maximum=True))  # "[0-9]+"
 ```
 
 #### backreferences
-Має параметр типу `int` (`group_n`) який використовується для вказівки, яку групу ви хочете використовувати для *backreference*. Повертає об'єкт типу **Regex**, який виконує [*backreferences*](https://www.regular-expressions.info/backref.html) групи, що відображається.
+Has a parameter of type `int` (`group_n`) which is used to indicate which group you want to perform a *backreference*. Returns a **Regex** which performs [*backreferences*](https://www.regular-expressions.info/backref.html) of the indicated group.
 
-
-O modalitate alternativă de a apela această funcție este de a oferi constructorul `int`.
+An alternative way of calling this method, is providing an `int` to the constructor.
 
 ```python
 from mre import Regex
@@ -177,18 +172,16 @@ print(regex_two)  # "\2"
 ```
 
 ## <a name="quantifier">Quantifier</a>
-Această clasă este o alternativă la apelul ** Regex.quantifier **. Acest constructor are 4 parametri:
+This class serves as an alternative to calling **Regex.quantifier**. The constructor has 4 parameters:
 
-| Параметр | Тип | Стандартне значення |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `n` | `int` | `0` |
 | `m` | `int` | `0` |
 | `without_maximum` | `bool` | `False` |
 
-
-Primul parametru se referă la expresia regulată care trebuie creată. Celelalte trei sunt pentru apelarea metodei
-**Regex.quantifier**.
+The first parameter refers to the RegEx you want to create, the other three are used to call method **Regex.quantifier**.
 
 ```python
 from mre import Regex, Quantifier
@@ -201,7 +194,7 @@ print(digits_two)  # "[0-9]{3,5}"
 ```
 
 ## <a name="set">Set</a>
-Цей клас представляє набір (set) у RegEx. Конструктор ідентичний **Regex**.
+This class represents a set in RegEx. The constructor is identical to **Regex**.
 
 ```python
 from mre import Set
@@ -212,11 +205,11 @@ print(regex_set)  # "[0-9]"
 print(regex_set.quantifier(3))  # "[0-9]{3}"
 ```
 
-### metode
-Цей клас успадковує методи класу **Regex** і перевантажує наступні методи:
+### Methods
+This class inherits the methods of class **Regex**, overriding the following.
 
 #### get
-Повертає значення, збережене в  `self.rgx`, але в дужках.
+Returns the value stored in `self.rgx`, but within brackets.
 
 ```python
 from mre import Set
@@ -226,7 +219,7 @@ print(regex_set.get())  # "[0-9]"
 ```
 
 #### quantifier
-Повертає новий об'єкт **Regex** з кількісним показником для набору.
+Returns a new **Regex** objects with a quantifier for the set.
 
 ```python
 from mre import Set
@@ -241,14 +234,14 @@ print(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
 ## <a name="group">Group</a>
-Цей клас представляє групу в RegEx. Конструктор має два параметри:
+This class represents a group in RegEx. The constructor has two parameters:
 
-| Параметр | Тип | Стандартне значення |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `non_capturing` | `bool` | `False` |
 
-Якщо вираз для `non_capturing` є `True`, символ, що відображає *RegEx Engine*, додається до групи Non-Captured-Gruppe (`?:`).
+If the argument for `non_capturing` is `True`, the symbol indicating *RegEx Engine* to return a non capturing group is added(`?:`).
 
 ```python
 from mre import Group
@@ -260,11 +253,11 @@ print(regex_group_one)  # (<h1>)([\w\s]+)(</h1>)
 print(regex_group_two)  # (?:<h1>)([\w\s]+)(?:</h1>)
 ```
 
-### metode
-Цей клас успадковує методи класу **Regex** і перевантажує наступні методи:
+### Methods
+This class inherits the methods of class **Regex**, overriding the following.
 
 #### get
-Повертає значення, збережене в `self.rgx`, але в дужках.
+Returns the value stored in `self.rgx`, but within parentheses.
 
 ```python
 from mre import Group
@@ -277,7 +270,7 @@ print(regex_group_two.get())  # "(?:</h1>)"
 ```
 
 #### quantifier
-Повертає новий об'єкт **Regex** з кількісним показником для набору.
+Returns a new **Regex** objects with a quantifier for the group.
 
 ```python
 from mre import Group
@@ -292,15 +285,14 @@ print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
 ## <a name="anchor">Anchor</a>
+This class respresents an anchored RegEx (the RegEx must start and end as defined). The constructor has two parameters:
 
-Această clasă este o expresie regulată legată (RegEx trebuie să înceapă și să se încheie după cum este specificat). Constructorul are doi parametri:
-
-| Параметр | Тип | Стандартне значеняя |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `negate` | `bool` | `False` |
 
-Якщо аргумент для `negate` є `True` до символів додається зворотній шаблон (Inverse Pattern), тобто, RegEx не повинен починатися та закінчуватися, як вказано.
+If the argument for `negate` is `True`, the inverse pattern symbol is added, i.e. the RegEx must not start and end as defined.
 
 ```python
 from mre import Anchor
@@ -312,11 +304,11 @@ print(regex_anchor_one)  # "^\d{4}-\w+.txt$"
 print(regex_anchor_two)  # "\b\d{4}-\w+.txt\B"
 ```
 
-### metode
-Цей клас успадковує методи класу **Regex** і перевантажує наступні методи:
+### Methods
+This class inherits the methods of class **Regex**, overriding the following.
 
 #### get
-Повертає значення, збережене в `self.rgx`, та закріплює його.
+Returns the value stored in `self.rgx`, but anchored.
 
 ```python
 from mre import Anchor
@@ -329,14 +321,14 @@ print(regex_anchor_two.get())  # "\b<h1>Hello world</h1>\B"
 ```
 
 ## <a name="range">helper.Range</a>
-Цей клас створений, щоб допомогти створити RegEx, який представляє собою клас символів у вигляді *range*. Конструктор має два параметри:
+This class is intended to assist in creating a RegEx that indicates a character class in form of a *range*. The constructor has two parameters:
 
-| Параметр | Тип | Стандартне значеняя |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `minimum` | `str`, `int` | `0` |
 | `maximum` | `str`, `int` | `"z"` |
 
-В ідеалі вам слід використовувати клас разом із **Set**. У **Set** дефіс має "магічне" значення, що дозволяє призначити проміжок. Поза набору дефіс має лише значення дефісу. Тож якщо ви хочете малі літери, вам слід використовувати `[a-z]` замість `a-z`. `a-z` вказує лише на те, що ви бажаєте символи `a`, `-` і `z`.
+Ideally you should use this class together with a **Set**. Within a **Set** the hyphen has a "magic" value, that allows it to assign a range. Outside of a set a hyphen has only the hyphen value. So if you want lowercase letters, you should use `[a-z]` instead of `a-z`. `a-z` indicates you only want the values `a`, `-` and `z`.
 
 ```python
 from mre.helper import Range
@@ -350,18 +342,18 @@ print(digits)  # "0-9"
 print(letters)  # "A-z"
 ```
 
-### metode
-Цей клас успадковує методи класу **Regex** і має свої методи.
+### Methods
+This class inherits the methods of the **Regex** class and has its own methods.
 
 #### digits
-Має два параметри:
+Has two parameters:
 
-| Параметр | Тип | Стандартне значеняя |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `minimum` | `int` | `0` |
 | `maximum` | `int` | `9` |
 
-Повертає діапазон (*range*), визначений цифрами між  `minimum` і `maximum`.
+Returns a *range* that is defined as the digits between `minimum` and `maximum`.
 
 ```python
 from mre.helper import Range
@@ -378,16 +370,16 @@ print(regex_range_four)  # "0-6"
 ```
 
 #### letters
-Має чотири параметри:
+Has four parameters:
 
-| Параметр | Тип | Стандартне значення |
+| Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `minimum` | `chr` | `A` |
 | `maximum` | `chr` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 
-Повертає діапазон (*range*), визначений цифрами між `minimum` і `maximum`.
+Returns a *range* that is defined as the letters between `minimum` and `maximum`.
 
 ```python
 from mre.helper import Range
@@ -410,9 +402,9 @@ print(regex_range_five)  # "A-Z"
 print(regex_range_six)  # "a-z"
 ```
 
-# exemple
+# Examples
 
-Є два способи створити RegEx для **CEP** (Бразильський поштовий індекс) (`[0-9]{5}-?[0-9]{3}`):
+2 ways to create a RegEx for a **CEP** (brazilian postal code) (`[0-9]{5}-?[0-9]{3}`):
 ```python
 from mre import Regex, Set
 
@@ -441,7 +433,7 @@ rgx_cep = Regex(
 )
 ```
 
-RegEx для **CPF** (Бразильський податковий номер) (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
+RegEx for a **CPF** (brazilian tax payer registry number) (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
 
 ```python
 from mre import Regex, Set
@@ -462,7 +454,7 @@ rgx_cpf = Regex(
 )
 ```
 
-RegEx для **CNPJ** (Ідентифікатор (ID) у бразильській базі даних для юридичних осіб) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
+RegEx for a **CNPJ** (ID in the brazilian National Registry of Legal Entities) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
 
 ```python
 from mre import Regex, Quantifier
