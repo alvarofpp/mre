@@ -1,4 +1,4 @@
-# Класи
+# clase
 
 - [Regex](#regex)
 - [Quantifier](#quantifier)
