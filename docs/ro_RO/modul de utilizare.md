@@ -6,7 +6,7 @@
 - [Group](#group)
 - [Anchor](#anchor)
 - Helper
-    - [Range](#range)
+- [Range](#range)
 
 ## <a name="regex">Regex</a>
 
