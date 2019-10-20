@@ -32,7 +32,7 @@ pip install mre
 - <a href="https://alvarofpp.github.io/mre/uk_UA">
     uk-UA <span>:ukraine:</span>
   </a>
-- <a href="https://alvarofpp.github.io/mre/uk_UA">
+- <a href="https://alvarofpp.github.io/mre/ro_RO">
     ro-RO <span>:romania:</span>
   </a>
 
