@@ -6,3 +6,4 @@
 - [es-ES](es_ES)
 - [pt-BR](pt_BR)
 - [uk-UA](uk_UA)
+- [ro-RO](ro_RO)
