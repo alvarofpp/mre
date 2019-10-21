@@ -260,7 +260,7 @@ print(regex_group_two)  # (?:<h1>)([\w\s]+)(?:</h1>)
 ```
 
 ### Métodos
-Essa classe herda os métodos da classe **Regex**, sobrescrevendo apenas os métodos a seguir.
+Essa classe herda os métodos da classe **Regex**, sobrescrevendo os métodos `get` e `quantifier`. Possui adicionalmente os métodos `name` e `backreference_named`.
 
 #### get
 Retorna o valor armazenado em `self.rgx`, mas entre parênteses.
@@ -288,6 +288,28 @@ print(regex_group.quantifier(3))  # "(<h1>){3}"
 
 print(type(regex_group))  # <class 'mre.Group.Group'>
 print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
+```
+
+#### name
+Retorna um novo objeto **Group** com a propriedade de nome representada por `?<>` a qual é retornado no método `get`.
+
+```python
+from mre import Group
+
+regex_named_group = Group("<h1>").name("tag")
+
+print(regex_named_group.get())  # "(?P<tag><h1>)"
+```
+
+#### backreference_named
+Retorna um novo objeto **Group** com a propriedade de nome de referência representada por `?P=` a qual é retornado no método `get`.
+
+```python
+from mre import Group
+
+reference_named_group = Group().backreference_named("tag")
+
+print(reference_named_group.get())  # "(?P=tag)"
 ```
 
 ## <a name="anchor">Anchor</a>
