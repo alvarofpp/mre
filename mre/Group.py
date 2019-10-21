@@ -51,3 +51,7 @@ class Group(Regex):
     def name(self, group_name: str) -> 'Group':
         self.group_name = "?P<{}>".format(group_name)
         return self
+
+    def backreference_named(self, group_name_reference: str) -> 'Group':
+        self.group_name = "?P={}".format(group_name_reference)
+        return self

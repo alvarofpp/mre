@@ -48,3 +48,15 @@ class TestGroup(unittest.TestCase):
             + self.group_value \
             + Group("</h1>", non_capturing=True)
         self.assertTrue(regex == "(?:<(?P<tag>h[1-6])>)([\w\s]+)(?:</h1>)")
+
+
+    def test_Reference_Named_group(self):
+        """Verifica se o regex para a tag <h1> com referência a um grupo nomeado funciona.
+        """
+        named_group_tag = Regex('<', Group('h[1-6]').name("tag"), '>')
+        reference_named_group = Regex('</', Group().backreference_named('tag'), '>')
+        regex = \
+            Group(named_group_tag, non_capturing=True) \
+            + self.group_value \
+            + Group(reference_named_group, non_capturing=True)
+        self.assertTrue(regex == "(?:<(?P<tag>h[1-6])>)([\w\s]+)(?:</(?P=tag)>)")
