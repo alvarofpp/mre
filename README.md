@@ -16,22 +16,22 @@ pip install mre
 <span>Documentation:</span>
 - <a href="https://alvarofpp.github.io/mre/da_DK">
     da-DK <span>:denmark:</span>
-  </a>
+  </a> <small>(v. 1.0)</small>
 - <a href="https://alvarofpp.github.io/mre/de_DE">
     de-DE <span>:de:</span>
-  </a>
+  </a> <small>(v. 1.0)</small>
 - <a href="https://alvarofpp.github.io/mre/en_US">
     en-US <span>:us:</span>
-  </a>
+  </a> <small>(v. 1.1)</small>
 - <a href="https://alvarofpp.github.io/mre/es_ES">
     es-ES <span>:es:</span>
-  </a>
+  </a> <small>(v. 1.0)</small>
 - <a href="https://alvarofpp.github.io/mre/pt_BR">
     pt-BR <span>:brazil:</span>
-  </a>
+  </a> <small>(v. 1.2)</small>
 - <a href="https://alvarofpp.github.io/mre/uk_UA">
     uk-UA <span>:ukraine:</span>
-  </a>
+  </a> <small>(v. 1.0)</small>
 
 ## Examples
 ```py
