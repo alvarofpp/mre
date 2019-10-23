@@ -49,9 +49,11 @@ class Group(Regex):
         return new_regex
 
     def name(self, group_name: str) -> 'Group':
+        """Set a group name."""
         self.group_name = "?P<{}>".format(group_name)
         return self
 
     def backreference_named(self, group_name_reference: str) -> 'Group':
+        """Backreference by group name."""
         self.group_name = "?P={}".format(group_name_reference)
         return self
