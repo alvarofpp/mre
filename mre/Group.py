@@ -7,6 +7,7 @@ class Group(Regex):
     """Group class."""
 
     def __init__(self, regex: Union[str, int, Regex] = "", non_capturing: bool = False):
+        self.group_name = ""
         nc = "?:" if non_capturing else ""
 
         if isinstance(regex, int):
@@ -20,10 +21,12 @@ class Group(Regex):
 
     def get(self) -> str:
         """Return regex."""
-        if self.rgx_comment is not None:
-            return "({})".format(self.rgx) + self.rgx_comment.get()
+        named_rgx = self.group_name + self.rgx
 
-        return "({})".format(self.rgx)
+        if self.rgx_comment is not None:
+            return "({})".format(named_rgx) + self.rgx_comment.get()
+
+        return "({})".format(named_rgx)
 
     def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> Regex:
         """Quantify the regex."""
@@ -44,3 +47,11 @@ class Group(Regex):
             new_regex.rgx_comment = comment
 
         return new_regex
+
+    def name(self, group_name: str) -> 'Group':
+        self.group_name = "?P<{}>".format(group_name)
+        return self
+
+    def backreference_named(self, group_name_reference: str) -> 'Group':
+        self.group_name = "?P={}".format(group_name_reference)
+        return self
