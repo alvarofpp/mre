@@ -582,7 +582,7 @@ print(regex_group_two)  # (?:&lt;h1&gt;)([\w\s]+)(?:&lt;/h1&gt;)
 </code></pre>
 
 <h3 id="metodos_2">Métodos</h3>
-<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo apenas os métodos a seguir.</p>
+<p>Essa classe herda os métodos da classe <strong>Regex</strong>, sobrescrevendo os métodos <code>get</code> e <code>quantifier</code>. Possui adicionalmente os métodos <code>name</code> e <code>backreference_named</code>.</p>
 <h4 id="get_2">get</h4>
 <p>Retorna o valor armazenado em <code>self.rgx</code>, mas entre parênteses.</p>
 <pre><code class="python">from mre import Group
@@ -605,6 +605,24 @@ print(regex_group.quantifier(3))  # &quot;(&lt;h1&gt;){3}&quot;
 
 print(type(regex_group))  # &lt;class 'mre.Group.Group'&gt;
 print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
+</code></pre>
+
+<h4 id="name">name</h4>
+<p>Retorna um novo objeto <strong>Group</strong> com a propriedade de nome representada por <code>?&lt;&gt;</code> a qual é retornado no método <code>get</code>.</p>
+<pre><code class="python">from mre import Group
+
+regex_named_group = Group(&quot;&lt;h1&gt;&quot;).name(&quot;tag&quot;)
+
+print(regex_named_group.get())  # &quot;(?P&lt;tag&gt;&lt;h1&gt;)&quot;
+</code></pre>
+
+<h4 id="backreference_named">backreference_named</h4>
+<p>Retorna um novo objeto <strong>Group</strong> com a propriedade de nome de referência representada por <code>?P=</code> a qual é retornado no método <code>get</code>.</p>
+<pre><code class="python">from mre import Group
+
+reference_named_group = Group().backreference_named(&quot;tag&quot;)
+
+print(reference_named_group.get())  # &quot;(?P=tag)&quot;
 </code></pre>
 
 <h2 id="anchor"><a name="anchor">Anchor</a></h2>

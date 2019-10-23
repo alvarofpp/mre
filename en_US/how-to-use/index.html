@@ -570,7 +570,7 @@ print(regex_group_two)  # (?:&lt;h1&gt;)([\w\s]+)(?:&lt;/h1&gt;)
 </code></pre>
 
 <h3 id="methods_2">Methods</h3>
-<p>This class inherits the methods of class <strong>Regex</strong>, overriding the following.</p>
+<p>This class inherits the methods of class <strong>Regex</strong>, overriding methods <code>get</code> and <code>quantifier</code>. It also has <code>name</code> and <code>backreference_named</code> methods.</p>
 <h4 id="get_2">get</h4>
 <p>Returns the value stored in <code>self.rgx</code>, but within parentheses.</p>
 <pre><code class="python">from mre import Group
@@ -593,6 +593,24 @@ print(regex_group.quantifier(3))  # &quot;(&lt;h1&gt;){3}&quot;
 
 print(type(regex_group))  # &lt;class 'mre.Group.Group'&gt;
 print(type(regex_group.quantifier(3)))  # &lt;class 'mre.Regex.Regex'&gt;
+</code></pre>
+
+<h4 id="name">name</h4>
+<p>Returns a new <strong>Group</strong> object with name property represented by <code>?&lt;&gt;</code> returned on method <code>get</code>.</p>
+<pre><code class="python">from mre import Group
+
+regex_named_group = Group(&quot;&lt;h1&gt;&quot;).name(&quot;tag&quot;)
+
+print(regex_named_group.get())  # &quot;(?P&lt;tag&gt;&lt;h1&gt;)&quot;
+</code></pre>
+
+<h4 id="backreference_named">backreference_named</h4>
+<p>Returns a new <strong>Group</strong> object with reference name property represented by <code>?P=</code> returned on method <code>get</code>.</p>
+<pre><code class="python">from mre import Group
+
+reference_named_group = Group().backreference_named(&quot;tag&quot;)
+
+print(reference_named_group.get())  # &quot;(?P=tag)&quot;
 </code></pre>
 
 <h2 id="anchor"><a name="anchor">Anchor</a></h2>
