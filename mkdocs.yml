@@ -5,8 +5,12 @@ site_author: MkDocs Team
 
 nav:
   - Home: index.md
-  - 'en': en/
-  - 'pt-br': pt_BR/
+  - 'da-DK': da_DK/
+  - 'de-DE': de_DE/
+  - 'en-US': en_US/
+  - 'es-ES': es_ES/
+  - 'pt-BR': pt_BR/
+  - 'uk-UA': uk_UA/
   - License: licenca.md
 
 repo_url: https://github.com/alvarofpp/mre

@@ -3,7 +3,7 @@
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mre.svg">
 </a>
 
-This a simple package to make regular expression in Python.
+This is a simple package to make regular expressions in Python.
 
 ```bash
 pip install mre
@@ -14,12 +14,24 @@ pip install mre
 
 
 <span>Documentation:</span>
-- <a href="https://alvarofpp.github.io/mre/en">
-    en <span>:us:</span>
-  </a>
+- <a href="https://alvarofpp.github.io/mre/da_DK">
+    da-DK <span>:denmark:</span>
+  </a> <small>(v. 1.0)</small>
+- <a href="https://alvarofpp.github.io/mre/de_DE">
+    de-DE <span>:de:</span>
+  </a> <small>(v. 1.0)</small>
+- <a href="https://alvarofpp.github.io/mre/en_US">
+    en-US <span>:us:</span>
+  </a> <small>(v. 1.1)</small>
+- <a href="https://alvarofpp.github.io/mre/es_ES">
+    es-ES <span>:es:</span>
+  </a> <small>(v. 1.0)</small>
 - <a href="https://alvarofpp.github.io/mre/pt_BR">
-    pt-br <span>:brazil:</span>
-  </a>
+    pt-BR <span>:brazil:</span>
+  </a> <small>(v. 1.2)</small>
+- <a href="https://alvarofpp.github.io/mre/uk_UA">
+    uk-UA <span>:ukraine:</span>
+  </a> <small>(v. 1.0)</small>
 
 ## Examples
 ```py
