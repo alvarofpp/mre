@@ -773,12 +773,12 @@ print(regex_range_four)  # &quot;0-6&quot;
 <tbody>
 <tr>
 <td><code>minimum</code></td>
-<td><code>chr</code></td>
+<td><code>char</code></td>
 <td><code>A</code></td>
 </tr>
 <tr>
 <td><code>maximum</code></td>
-<td><code>chr</code></td>
+<td><code>char</code></td>
 <td><code>z</code></td>
 </tr>
 <tr>
@@ -823,9 +823,9 @@ print(regex_range_six)  # &quot;a-z&quot;
 <p><strong>Utilizando o método</strong>:</p>
 <pre><code class="py">from mre import Regex, Set
 
-# All digits
+# Todos os dígitos
 digits = Set(Regex(&quot;0-9&quot;))
-# Add comment
+# Adiciona comentário
 digits = digits.comment('Get all digits')
 
 # Output: [0-9](?#Get all digits)
@@ -834,9 +834,9 @@ digits = digits.comment('Get all digits')
 <p><strong>Utilizando a classe</strong>:</p>
 <pre><code class="py">from mre import Regex, Set, Comment
 
-# All digits
+# Todos os dígitos
 digits = Set(Regex(&quot;0-9&quot;))
-# CEP comment
+# Comentário do CEP
 cep_comment = Comment('Get zip code Brazil on input')
 # CEP regex
 rgx_cep = Regex(
