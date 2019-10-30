@@ -396,8 +396,8 @@ Has four parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
-| `minimum` | `chr` | `A` |
-| `maximum` | `chr` | `z` |
+| `minimum` | `char` | `A` |
+| `maximum` | `char` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 

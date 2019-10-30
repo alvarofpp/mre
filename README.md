@@ -12,7 +12,6 @@ pip install mre
 - Test regex: [Regex101](https://regex101.com/);
 - [Regular expression operations](https://docs.python.org/3/library/re.html).
 
-
 <span>Documentation:</span>
 - <a href="https://alvarofpp.github.io/mre/da_DK">
     da-DK <span>:denmark:</span>
@@ -48,18 +47,33 @@ rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 ```
 
 ```py
-from mre import Regex, Set
+from mre import Set
+from mre.helper import Range
+
+# All digits
+digits = Set(Range(0, 9))
+# Add comment
+digits = digits.comment('Get all digits')
+
+# Output: [0-9](?#Get all digits)
+```
+
+```py
+from mre import Regex, Set, Comment
 
 # All digits
 digits = Set(Regex("0-9"))
-
+# CEP comment
+cep_comment = Comment('Get zip code Brazil on input')
+# CEP regex
 rgx_cep = Regex(
     digits.quantifier(5),
     Regex("-").quantifier(0, 1),
     digits.quantifier(3),
+    cep_comment
 )
 
-# Output: [0-9]{5}-?[0-9]{3}
+# Output: [0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)
 ```
 
 ## Contributing documentation

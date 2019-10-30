@@ -374,8 +374,8 @@ Hat vier Parameter:
 
 | Parameter | Typ | Standard Wert |
 | --------- | ---- | ------------ |
-| `minimum` | `chr` | `A` |
-| `maximum` | `chr` | `z` |
+| `minimum` | `char` | `A` |
+| `maximum` | `char` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 

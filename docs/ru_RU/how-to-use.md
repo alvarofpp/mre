@@ -374,8 +374,8 @@ print(regex_range_four)  # "0-6"
 
 | Параметр | Тип | Значение по-умолчанию |
 | --------- | ---- | ------------ |
-| `minimum` | `chr` | `A` |
-| `maximum` | `chr` | `z` |
+| `minimum` | `char` | `A` |
+| `maximum` | `char` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 

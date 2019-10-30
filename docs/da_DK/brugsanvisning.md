@@ -403,8 +403,8 @@ Har fire parametre:
 
 | Parameter | Type | Standardværdi |
 | --------- | ---- | ------------ |
-| `minimum` | `chr` | `A` |
-| `maximum` | `chr` | `z` |
+| `minimum` | `char` | `A` |
+| `maximum` | `char` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 

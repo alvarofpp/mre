@@ -402,8 +402,8 @@ Possui 4 parâmetros:
 
 | Parâmetro | Tipo | Valor padrão |
 | --------- | ---- | ------------ |
-| `minimum` | `chr` | `A` |
-| `maximum` | `chr` | `z` |
+| `minimum` | `char` | `A` |
+| `maximum` | `char` | `z` |
 | `uppercase` | `bool` | `False` |
 | `lowercase` | `bool` | `False` |
 
@@ -440,9 +440,9 @@ Existem dois modos de realizar comentários no seu Regex:
 ```py
 from mre import Regex, Set
 
-# All digits
+# Todos os dígitos
 digits = Set(Regex("0-9"))
-# Add comment
+# Adiciona comentário
 digits = digits.comment('Get all digits')
 
 # Output: [0-9](?#Get all digits)
@@ -452,9 +452,9 @@ digits = digits.comment('Get all digits')
 ```py
 from mre import Regex, Set, Comment
 
-# All digits
+# Todos os dígitos
 digits = Set(Regex("0-9"))
-# CEP comment
+# Comentário do CEP
 cep_comment = Comment('Get zip code Brazil on input')
 # CEP regex
 rgx_cep = Regex(
