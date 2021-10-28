@@ -3,6 +3,7 @@ import unittest
 import tests.test_Set
 import tests.test_Regex
 import tests.test_Group
+import tests.test_Lookaround
 import tests.test_Anchor
 import tests.test_Comment
 import tests.test_Quantifier
@@ -16,6 +17,7 @@ def suite():
     suite.addTests(loader.loadTestsFromModule(tests.test_Set))
     suite.addTests(loader.loadTestsFromModule(tests.test_Regex))
     suite.addTests(loader.loadTestsFromModule(tests.test_Group))
+    suite.addTests(loader.loadTestsFromModule(tests.test_Lookaround))
     suite.addTests(loader.loadTestsFromModule(tests.test_Anchor))
     suite.addTests(loader.loadTestsFromModule(tests.test_Comment))
     suite.addTests(loader.loadTestsFromModule(tests.test_Quantifier))
