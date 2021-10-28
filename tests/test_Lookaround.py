@@ -1,22 +1,15 @@
-import unittest
+from unittest import TestCase
 from mre import Regex, Lookahead
 
 
-class TestGroup(unittest.TestCase):
+class TestGroup(TestCase):
     def setUp(self):
-        """Inicia novo objeto em todo os testes.
-        """
         self.regex = Regex("[A-z]")
 
-
-    def test_Positive_Lookahead(self):
-        """Verifica se o regex para positive lookhead funciona.
-        """
+    def test_positive_lookahead(self):
         lookahead = self.regex + Lookahead("water", must_not_include=False)
         self.assertTrue(lookahead == "[A-z](?=water)")
 
-    def test_Negative_Lookahead(self):
-        """Verifica se o regex para negative lookahead funciona.
-        """
+    def test_negative_lookahead(self):
         lookahead = self.regex + Lookahead("water", must_not_include=True)
         self.assertTrue(lookahead == "[A-z](?!water)")

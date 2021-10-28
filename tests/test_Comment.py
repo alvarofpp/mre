@@ -1,12 +1,9 @@
-import unittest
+from unittest import TestCase
 from mre import Regex, Comment, Set
 
 
-class TestComment(unittest.TestCase):
-
-    def test_Comment_Method(self):
-        """Tests the comment method.
-        """
+class TestComment(TestCase):
+    def test_comment_method(self):
         # All digits
         digits = Regex("[0-9]")
         # CEP regex
@@ -18,9 +15,7 @@ class TestComment(unittest.TestCase):
 
         self.assertTrue(rgx_cep == "[0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)")
 
-    def test_Comment_Class(self):
-        """Tests the Comment class.
-        """
+    def test_comment_class(self):
         # All digits
         digits = Regex("[0-9]")
         # CEP comment
@@ -35,7 +30,7 @@ class TestComment(unittest.TestCase):
 
         self.assertTrue(rgx_cep == "[0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)")
 
-    def test_Set_comment(self):
+    def test_set_comment(self):
         # All digits
         digits = Set(Regex("0-9"))
         # Add comment

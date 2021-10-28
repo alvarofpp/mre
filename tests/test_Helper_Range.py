@@ -1,23 +1,16 @@
-import unittest
+from unittest import TestCase
 from mre import Regex, Set
 from mre.helper import Range
 
 
-class TestHelperRange(unittest.TestCase):
+class TestHelperRange(TestCase):
     def setUp(self):
-        """Inicia novo objeto em todo os testes.
-        """
         self.regex = Regex("[0-9]")
 
-    def test_Range_Digits(self):
-        """Verifica se o Helper de Ranges funciona.
-        """
+    def test_range_digits(self):
         self.assertTrue(self.regex == Set(Range().digits()))
 
     def test_CPF(self):
-        """Verifica se os modos de criar uma máscara para CPF funcionam.
-        CPF [0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}
-        """
         self.assertTrue(self.regex == Set(Range().digits()))
         all_digits = Set(Range(0, 9))
         dot = Regex('.').quantifier(0, 1)
