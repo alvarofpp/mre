@@ -10,7 +10,8 @@ class Lookahead(Group):
         lookahead = "?!" if must_not_include else "?="
 
         if isinstance(regex, int):
-            regex = self.backreferences(regex)
+            self._init_attributes()
+            regex = Regex(lookahead, self.backreferences(regex))
         elif isinstance(regex, str):
             regex = lookahead + regex
         else:

@@ -11,7 +11,8 @@ class Group(Regex):
         nc = "?:" if non_capturing else ""
 
         if isinstance(regex, int):
-            regex = self.backreferences(regex)
+            self._init_attributes()
+            regex = Regex(nc, self.backreferences(regex))
         elif isinstance(regex, str):
             regex = nc + regex
         else:

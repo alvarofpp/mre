@@ -27,8 +27,7 @@ class Regex(ABC):
     HYPHEN = "\\-"
 
     def __init__(self, *regexs: Union[str, int, 'Regex', Comment]):
-        self.rgx = ""
-        self.rgx_comment = None
+        self._init_attributes()
 
         for regex in regexs:
             if isinstance(regex, int):
@@ -60,6 +59,12 @@ class Regex(ABC):
             rgx._set_regex(self.get() + regex)
 
         return rgx
+
+    def _init_attributes(self):
+        if not hasattr(self, 'rgx'):
+            self.rgx = ""
+        if not hasattr(self, 'rgx_comment'):
+            self.rgx_comment = None
 
     def get(self) -> str:
         """Return regex."""
