@@ -64,6 +64,13 @@ rgx_cep = Regex(
 # Output: [0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)
 ```
 
+## Tests
+To test the package just run the following command.:
+
+```shell
+coverage run -m unittest discover tests && coverage report -m
+```
+
 ## Contributing
 Contributions are more than welcome. Fork, improve and make a pull request. For bugs, ideas for improvement or other, please create an [issue](https://github.com/alvarofpp/mre/issues).
 
