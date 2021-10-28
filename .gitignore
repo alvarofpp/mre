@@ -7,4 +7,4 @@ build/*
 site/*
 # Egg metadata
 *.egg-info
-
+.coverage
