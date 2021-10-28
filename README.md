@@ -18,7 +18,7 @@ pip install mre
 - [de-DE :de:](docs/de_DE.md) <small>(v. 0.8)</small>
 - [en-US :us:](docs/en_US.md) <small>(v. 0.9)</small>
 - [es-ES :es:](docs/es_ES.md) <small>(v. 0.8)</small>
-- [pt-BR :brazil:](docs/pt_BR.md) <small>(v. 0.10)</small>
+- [pt-BR :brazil:](docs/pt_BR.md) <small>(v. 0.11)</small>
 - [ru-RU :ru:](docs/ru_RU.md) <small>(v. 0.8)</small>
 - [uk-UA :ukraine:](docs/uk_UA.md) <small>(v. 0.8)</small>
 
