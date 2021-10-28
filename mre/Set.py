@@ -28,10 +28,6 @@ class Set(Regex):
     def comment(self, comment: Union[str, Comment] = "") -> 'Set':
         """Set comment for regex."""
         new_regex = Set(self.rgx)
-
-        if isinstance(comment, str):
-            new_regex.rgx_comment = Comment(comment)
-        else:
-            new_regex.rgx_comment = comment
+        new_regex.rgx_comment = comment if isinstance(comment, Comment) else Comment(comment)
 
         return new_regex
