@@ -12,31 +12,19 @@ pip install mre
 - Test regex: [Regex101](https://regex101.com/);
 - [Regular expression operations](https://docs.python.org/3/library/re.html).
 
-<span>Documentation:</span>
-- <a href="https://alvarofpp.github.io/mre/da_DK">
-    da-DK <span>:denmark:</span>
-  </a> <small>(v. 1.0)</small>
-- <a href="https://alvarofpp.github.io/mre/de_DE">
-    de-DE <span>:de:</span>
-  </a> <small>(v. 1.0)</small>
-- <a href="https://alvarofpp.github.io/mre/en_US">
-    en-US <span>:us:</span>
-  </a> <small>(v. 1.1)</small>
-- <a href="https://alvarofpp.github.io/mre/es_ES">
-    es-ES <span>:es:</span>
-  </a> <small>(v. 1.0)</small>
-- <a href="https://alvarofpp.github.io/mre/pt_BR">
-    pt-BR <span>:brazil:</span>
-  </a> <small>(v. 1.2)</small>
-- <a href="https://alvarofpp.github.io/mre/ru_RU">
-    ru-RU <span>:ru:</span>
-  </a> <small>(v. 1.0)</small>
-- <a href="https://alvarofpp.github.io/mre/uk_UA">
-    uk-UA <span>:ukraine:</span>
-  </a> <small>(v. 1.0)</small>
+## Documentation
+
+- [da-DK :denmark:](docs/da_DK.md) <small>(v. 0.8)</small>
+- [de-DE :de:](docs/de_DE.md) <small>(v. 0.8)</small>
+- [en-US :us:](docs/en_US.md) <small>(v. 0.9)</small>
+- [es-ES :es:](docs/es_ES.md) <small>(v. 0.8)</small>
+- [pt-BR :brazil:](docs/pt_BR.md) <small>(v. 0.10)</small>
+- [ru-RU :ru:](docs/ru_RU.md) <small>(v. 0.8)</small>
+- [uk-UA :ukraine:](docs/uk_UA.md) <small>(v. 0.8)</small>
 
 ## Examples
-```py
+
+```python
 from mre import Regex, Group
 
 rgx_one = Regex("Hello world")  # Hello world
@@ -46,7 +34,7 @@ rgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>
 rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 ```
 
-```py
+```python
 from mre import Set
 from mre.helper import Range
 
@@ -58,7 +46,7 @@ digits = digits.comment('Get all digits')
 # Output: [0-9](?#Get all digits)
 ```
 
-```py
+```python
 from mre import Regex, Set, Comment
 
 # All digits
@@ -76,14 +64,8 @@ rgx_cep = Regex(
 # Output: [0-9]{5}-?[0-9]{3}(?#Get zip code Brazil on input)
 ```
 
-## Contributing documentation
+## Contributing
+Contributions are more than welcome. Fork, improve and make a pull request. For bugs, ideas for improvement or other, please create an [issue](https://github.com/alvarofpp/mre/issues).
 
-```bash
-pip install -r requirements-dev.txt
-```
-Running documentation
-
-```bash
-mkdocs serve
-```
-Change or create files in the `docs` folder.
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
