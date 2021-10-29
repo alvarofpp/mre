@@ -1,3 +1,5 @@
+from .RegexBase import RegexBase
+
 # From Regex
 from .Regex import Regex
 from .Anchor import Anchor
