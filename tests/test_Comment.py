@@ -37,8 +37,3 @@ class TestComment(TestCase):
         digits = digits.comment('Get all digits')
 
         self.assertTrue(digits == "[0-9](?#Get all digits)")
-
-    def test_comment_set_method(self):
-        comment = Comment()
-        comment.set('Test comment')
-        self.assertTrue(comment.get() == "(?#Test comment)")
