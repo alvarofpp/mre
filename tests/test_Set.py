@@ -24,11 +24,6 @@ class TestSet(TestCase):
         cep_with_comment = cep.comment('Brazilian postal code')
         self.assertTrue(cep_with_comment == "[0-9]{5}-?[0-9]{3}(?#Brazilian postal code)")
 
-    def test_set_with_comment_class(self):
-        cep = Set(self.digits).quantifier(5) \
-              + Quantifier("-", 0, 1) \
-              + Set(self.digits).quantifier(3)
-
         comment = Comment('Brazilian postal code')
         cep_with_comment = cep.comment(comment)
         self.assertTrue(cep_with_comment == "[0-9]{5}-?[0-9]{3}(?#Brazilian postal code)")

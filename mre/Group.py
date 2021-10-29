@@ -29,23 +29,10 @@ class Group(Regex):
 
         return "({})".format(named_rgx)
 
-    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> Regex:
-        """Quantify the regex."""
-        rgx_old = self.rgx
-        self.rgx = self.get()
-        regex_return = super().quantifier(n, m, without_maximum)
-        self.rgx = rgx_old
-
-        return regex_return
-
     def comment(self, comment: Union[str, Comment] = "") -> 'Group':
         """Set comment for regex."""
         new_regex = Group(self.rgx)
-
-        if isinstance(comment, str):
-            new_regex.rgx_comment = Comment(comment)
-        else:
-            new_regex.rgx_comment = comment
+        new_regex.rgx_comment = comment if isinstance(comment, Comment) else Comment(comment)
 
         return new_regex
 
