@@ -399,9 +399,9 @@ Returnerer en *range*, der er defineret som cifrene mellem `minimum` og `maximum
 from mre.helper import Range
 
 regex_range_one = Range(0, 9)
-regex_range_two = Range().digits()
+regex_range_two = Range.digits()
 regex_range_three = Range(0, 6)
-regex_range_four = Range().digits(0, 6)
+regex_range_four = Range.digits(0, 6)
 
 print(regex_range_one)  # "0-9"
 print(regex_range_two)  # "0-9"
@@ -427,13 +427,13 @@ from mre.helper import Range
 
 # alle bogstaver
 regex_range_one = Range('A', 'z')
-regex_range_two = Range().letters()
-regex_range_three = Range().letters('A', 'z')
-regex_range_four = Range().letters(uppercase=True, lowercase=True)
+regex_range_two = Range.letters()
+regex_range_three = Range.letters('A', 'z')
+regex_range_four = Range.letters(uppercase=True, lowercase=True)
 # alle store bogstaver
-regex_range_five = Range().letters(uppercase=True)
+regex_range_five = Range.letters(uppercase=True)
 # alle små bogstaver
-regex_range_six = Range().letters(lowercase=True)
+regex_range_six = Range.letters(lowercase=True)
 
 print(regex_range_one)  # "A-z"
 print(regex_range_two)  # "A-z"
@@ -465,7 +465,7 @@ from mre import Regex, Quantifier, Set
 from mre.helper import Range
 
 # alle cifre [0-9]
-digits = Set(Range().digits())
+digits = Set(Range.digits())
 # bindestregen må forekomme nul eller én gange
 hyphen = Quantifier("-", 0, 1)
 

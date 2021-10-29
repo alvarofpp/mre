@@ -1,4 +1,5 @@
 # MRE
+
 Python пакет для создания регулярных выражений (RegEx). Его цель - облегчить чтение RegEx.
 
 ## Установка MRE
@@ -370,9 +371,9 @@ print(letters)  # "A-z"
 from mre.helper import Range
 
 regex_range_one = Range(0, 9)
-regex_range_two = Range().digits()
+regex_range_two = Range.digits()
 regex_range_three = Range(0, 6)
-regex_range_four = Range().digits(0, 6)
+regex_range_four = Range.digits(0, 6)
 
 print(regex_range_one)  # "0-9"
 print(regex_range_two)  # "0-9"
@@ -397,12 +398,12 @@ from mre.helper import Range
 
 # все буквы
 regex_range_one = Range('A', 'z')
-regex_range_two = Range().letters()
-regex_range_three = Range().letters('A', 'z')
+regex_range_two = Range.letters()
+regex_range_three = Range.letters('A', 'z')
 # все заглавные буквы
-regex_range_five = Range().letters(uppercase=True)
+regex_range_five = Range.letters(uppercase=True)
 # все строчные буквы
-regex_range_six = Range().letters(lowercase=True)
+regex_range_six = Range.letters(lowercase=True)
 
 print(regex_range_one)  # "A-z"
 print(regex_range_two)  # "A-z"
@@ -433,7 +434,7 @@ from mre import Regex, Quantifier, Set
 from mre.helper import Range
 
 # все цифры [0-9]
-digits = Set(Range().digits())
+digits = Set(Range.digits())
 # дефис может появляться ноль или один раз
 hyphen = Quantifier("-", 0, 1)
 
