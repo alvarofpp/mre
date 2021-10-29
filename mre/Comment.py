@@ -1,13 +1,9 @@
-class Comment:
-    """Comment class."""
+from .RegexBase import RegexBase
 
-    def __init__(self, raw_comment: str = ""):
-        self.raw_comment = raw_comment
+
+class Comment(RegexBase):
+    """Comment class."""
 
     def get(self) -> str:
         """Return regex."""
-        return "(?#{})".format(self.raw_comment)
-
-    def set(self, raw_comment: str = ""):
-        """Set regex value."""
-        self.raw_comment = raw_comment
+        return "(?#{})".format(self.rgx)

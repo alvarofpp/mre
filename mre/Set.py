@@ -16,15 +16,6 @@ class Set(Regex):
 
         return "[{}]".format(self.rgx)
 
-    def quantifier(self, n: int = 0, m: int = 0, without_maximum: bool = False) -> Regex:
-        """Quantify the regex."""
-        rgx_old = self.rgx
-        self.rgx = self.get()
-        regex_return = super().quantifier(n, m, without_maximum)
-        self.rgx = rgx_old
-
-        return regex_return
-
     def comment(self, comment: Union[str, Comment] = "") -> 'Set':
         """Set comment for regex."""
         new_regex = Set(self.rgx)
