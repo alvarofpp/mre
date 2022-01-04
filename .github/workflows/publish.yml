@@ -3,7 +3,7 @@ name: Publish the package on PyPi
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   publish-package:
@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate REPOSITORY_NAME env variable
-        run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+        run: |
+          echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' \
+          | awk -F '/' '{print $2}')" >> $GITHUB_ENV
         shell: bash
       - name: Docker pull
         run: docker pull alvarofpp/pypi-publish
