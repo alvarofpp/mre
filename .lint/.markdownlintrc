@@ -1,0 +1,11 @@
+{
+  "no-duplicate-heading": {
+    "allow_different_nesting": true
+  },
+  "line-length": {
+    "line_length": 100
+  },
+  "no-inline-html": {
+    "allowed_elements": ["a", "small", "img"]
+  }
+}
