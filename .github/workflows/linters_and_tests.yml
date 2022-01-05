@@ -9,7 +9,14 @@ on:
 
 jobs:
   lint:
+    name: Run linters
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: make lint
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make test-coverage
