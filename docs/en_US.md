@@ -1,6 +1,7 @@
 # MRE
 
-A Python package to make regular expression (RegEx). Its purpose is to make creating a RegEx something easier to read.
+A Python package to make regular expression (RegEx). Its purpose is to make creating a
+RegEx something easier to read.
 
 ## MRE Installation
 
@@ -10,7 +11,7 @@ Install the MRE package using pip:
 pip install mre
 ```
 
-# Classes
+## Classes
 
 - [Regex](#regex)
 - [Quantifier](#quantifier)
@@ -18,16 +19,21 @@ pip install mre
 - [Group](#group)
 - [Anchor](#anchor)
 - Helper
-    - [Range](#range)
+  - [Range](#range)
 
-## <a name="regex">Regex</a>
-This is the parent class of all other classes in this package. The RegEx is handled in the variable `self.rgx`. Your constructor can receive any number of inputs, but they require the following types: `str`, `int` and the `Regex` class itself. To further explain:
+### <a name="regex">Regex</a>
+
+This is the parent class of all other classes in this package. The RegEx is handled in the
+variable `self.rgx`. Your constructor can receive any number of inputs, but they require
+the following types: `str`, `int` and the `Regex` class itself. To further explain:
 
 - `str`: concatenates to variable `self.rgx`;
 - `int`: performs [*backreferences*](https://www.regular-expressions.info/backref.html);
-- `Regex`: concatenates the value of `self.rgx` of the passed object to the variable `self.rgx` of the receiving object.
+- `Regex`: concatenates the value of `self.rgx` of the passed object to the variable `self.rgx`
+  of the receiving object.
 
 Ways to declare a **Regex**:
+
 ```python
 from mre import Regex, Group
 
@@ -38,7 +44,8 @@ rgx_four = Regex('<', Group('h[1-6]'), '>')  # <(h[1-6])>
 rgx_five = Regex('<', Regex.SLASH, 1, '>')  # <\/\1>
 ```
 
-### Constants
+#### Constants
+
 Constants available in class **Regex**:
 
 | Constant | Value |
@@ -57,10 +64,12 @@ Constants available in class **Regex**:
 | `ONE_OR_MULTIPLE` | `+` |
 | `HYPHEN` | `\\-` |
 
-### Methods
+#### Methods
+
 Descriptions of methods and overloads.
 
-#### \_\_str\_\_
+##### \_\_str\_\_
+
 Returns the value stored in `self.rgx`.
 
 ```python
@@ -70,10 +79,13 @@ regex = Regex("Hello world")
 print(regex)  # "Hello world"
 ```
 
-#### \_\_eq\_\_
+##### \_\_eq\_\_
+
 Comparisons are possible with `str` and `Regex` types:
+
 - `== str`: compares `self.rgx` to the value of the passed variable;
-- `== Regex`: compares `self.rgx` (accessed via method **get**) to the value of `self.rgx` of the passed object (also accessed via method **get**).
+- `== Regex`: compares `self.rgx` (accessed via method **get**) to the value of `self.rgx` of
+  the passed object (also accessed via method **get**).
 
 ```python
 from mre import Regex
@@ -87,13 +99,16 @@ print(regex_one == Regex("Hello world"))  # True
 print(regex_one == Regex("Hello world!"))  # False
 ```
 
-#### \_\_iadd\_\_
+##### \_\_iadd\_\_
+
 Expects variables of type `str` and `Regex`. For better understanding:
 
 - `+= str`: concatenates `self.rgx` with the value of the passed variable;
-- `+= Regex`: concatenates `self.rgx` with the value of variable `self.rgx` of the passed object (accessed via method **get**).
+- `+= Regex`: concatenates `self.rgx` with the value of variable `self.rgx` of the passed
+  object (accessed via method **get**).
 
-The overload directly changes the value of `self.rgx`. In case of operations like **Set** of an object, it will change to the value between to brackets.
+The overload directly changes the value of `self.rgx`. In case of operations like **Set** of
+an object, it will change to the value between to brackets.
 
 ```python
 from mre import Regex, Set
@@ -107,11 +122,15 @@ regex_set += " world"
 print(regex_set)  # "[Hello world]"
 ```
 
-#### \_\_add\_\_
-Expects variables of type `str` and `Regex`. Unlike the overload of **\_\_iadd\_\_**, this overload returns a new **Regex** object.
+##### \_\_add\_\_
 
-- `+ str`: concatenates `self.rgx` (accessed via method **get**) with the value of the passed variable;
-- `+ Regex`: concatenates `self.rgx` (accessed via method **get**) with the value of `self.rgx` of the passed object (also accessed via method **get**).
+Expects variables of type `str` and `Regex`. Unlike the overload of **\_\_iadd\_\_**, this
+overload returns a new **Regex** object.
+
+- `+ str`: concatenates `self.rgx` (accessed via method **get**) with the value of the passed
+  variable;
+- `+ Regex`: concatenates `self.rgx` (accessed via method **get**) with the value of `self.rgx`
+  of the passed object (also accessed via method **get**).
 
 ```python
 from mre import Regex
@@ -123,7 +142,8 @@ print(regex_one)  # "Hello world"
 print(regex_two)  # "Hello world"
 ```
 
-#### get
+##### get
+
 Returns the value stored in `self.rgx`.
 
 ```python
@@ -133,7 +153,8 @@ regex = Regex("stored value")
 print(regex.get())  # "stored value"
 ```
 
-#### quantifier
+##### quantifier
+
 Has the following parameters:
 
 | Parameter | Type | Default value |
@@ -153,6 +174,7 @@ In specific cases, a symbol is added. These cases are:
 | `1` | - | `True` | `+` | `Regex.ONE_OR_MULTIPLE` |
 
 In addition to these specific cases, quantification may occur as follows:
+
 - `{n}`: should occur `n` times;
 - `{n, m}`: may occur from `n` up to `m` times.
 
@@ -168,8 +190,11 @@ print(digits.quantifier(0, without_maximum=True))  # "[0-9]*"
 print(digits.quantifier(1, without_maximum=True))  # "[0-9]+"
 ```
 
-#### backreferences
-Has a parameter of type `int` (`group_n`) which is used to indicate which group you want to perform a *backreference*. Returns a **Regex** which performs [*backreferences*](https://www.regular-expressions.info/backref.html) of the indicated group.
+##### backreferences
+
+Has a parameter of type `int` (`group_n`) which is used to indicate which group you want to
+perform a *backreference*. Returns a **Regex** which performs
+[*backreferences*](https://www.regular-expressions.info/backref.html) of the indicated group.
 
 An alternative way of calling this method, is providing an `int` to the constructor.
 
@@ -183,8 +208,10 @@ print(regex_one)  # "\1"
 print(regex_two)  # "\2"
 ```
 
-## <a name="quantifier">Quantifier</a>
-This class serves as an alternative to calling **Regex.quantifier**. The constructor has 4 parameters:
+### <a name="quantifier">Quantifier</a>
+
+This class serves as an alternative to calling **Regex.quantifier**. The constructor
+has 4 parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
@@ -193,7 +220,8 @@ This class serves as an alternative to calling **Regex.quantifier**. The constru
 | `m` | `int` | `0` |
 | `without_maximum` | `bool` | `False` |
 
-The first parameter refers to the RegEx you want to create, the other three are used to call method **Regex.quantifier**.
+The first parameter refers to the RegEx you want to create, the other three are used to
+call method **Regex.quantifier**.
 
 ```python
 from mre import Regex, Quantifier
@@ -205,7 +233,8 @@ print(digits_one)  # "[0-9]{3,5}"
 print(digits_two)  # "[0-9]{3,5}"
 ```
 
-## <a name="set">Set</a>
+### <a name="set">Set</a>
+
 This class represents a set in RegEx. The constructor is identical to **Regex**.
 
 ```python
@@ -217,10 +246,12 @@ print(regex_set)  # "[0-9]"
 print(regex_set.quantifier(3))  # "[0-9]{3}"
 ```
 
-### Methods
+#### Methods
+
 This class inherits the methods of class **Regex**, overriding the following.
 
-#### get
+##### get
+
 Returns the value stored in `self.rgx`, but within brackets.
 
 ```python
@@ -230,7 +261,8 @@ regex_set = Set("0-9")
 print(regex_set.get())  # "[0-9]"
 ```
 
-#### quantifier
+##### quantifier
+
 Returns a new **Regex** objects with a quantifier for the set.
 
 ```python
@@ -245,7 +277,8 @@ print(type(regex_set))  # <class 'mre.Set.Set'>
 print(type(regex_set.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
-## <a name="group">Group</a>
+### <a name="group">Group</a>
+
 This class represents a group in RegEx. The constructor has two parameters:
 
 | Parameter | Type | default value |
@@ -253,7 +286,8 @@ This class represents a group in RegEx. The constructor has two parameters:
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `non_capturing` | `bool` | `False` |
 
-If the argument for `non_capturing` is `True`, the symbol indicating *RegEx Engine* to return a non capturing group is added(`?:`).
+If the argument for `non_capturing` is `True`, the symbol indicating *RegEx Engine* to
+return a non capturing group is added(`?:`).
 
 ```python
 from mre import Group
@@ -265,10 +299,13 @@ print(regex_group_one)  # (<h1>)([\w\s]+)(</h1>)
 print(regex_group_two)  # (?:<h1>)([\w\s]+)(?:</h1>)
 ```
 
-### Methods
-This class inherits the methods of class **Regex**, overriding methods `get` and `quantifier`. It also has `name` and `backreference_named` methods.
+#### Methods
 
-#### get
+This class inherits the methods of class **Regex**, overriding methods `get` and `quantifier`.
+It also has `name` and `backreference_named` methods.
+
+##### get
+
 Returns the value stored in `self.rgx`, but within parentheses.
 
 ```python
@@ -281,7 +318,8 @@ print(regex_group_one.get())  # "(<h1>)"
 print(regex_group_two.get())  # "(?:</h1>)"
 ```
 
-#### quantifier
+##### quantifier
+
 Returns a new **Regex** objects with a quantifier for the group.
 
 ```python
@@ -296,7 +334,8 @@ print(type(regex_group))  # <class 'mre.Group.Group'>
 print(type(regex_group.quantifier(3)))  # <class 'mre.Regex.Regex'>
 ```
 
-#### name
+##### name
+
 Returns a new **Group** object with name property represented by `?<>` returned on method `get`.
 
 ```python
@@ -307,8 +346,10 @@ regex_named_group = Group("<h1>").name("tag")
 print(regex_named_group.get())  # "(?P<tag><h1>)"
 ```
 
-#### backreference_named
-Returns a new **Group** object with reference name property represented by `?P=` returned on method `get`.
+##### backreference_named
+
+Returns a new **Group** object with reference name property represented by `?P=`
+returned on method `get`.
 
 ```python
 from mre import Group
@@ -318,15 +359,18 @@ reference_named_group = Group().backreference_named("tag")
 print(reference_named_group.get())  # "(?P=tag)"
 ```
 
-## <a name="anchor">Anchor</a>
-This class respresents an anchored RegEx (the RegEx must start and end as defined). The constructor has two parameters:
+### <a name="anchor">Anchor</a>
+
+This class respresents an anchored RegEx (the RegEx must start and end as defined).
+The constructor has two parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `regex` | `str`, `int`, `Regex` | `""` |
 | `negate` | `bool` | `False` |
 
-If the argument for `negate` is `True`, the inverse pattern symbol is added, i.e. the RegEx must not start and end as defined.
+If the argument for `negate` is `True`, the inverse pattern symbol is added, i.e. the RegEx
+must not start and end as defined.
 
 ```python
 from mre import Anchor
@@ -338,10 +382,12 @@ print(regex_anchor_one)  # "^\d{4}-\w+.txt$"
 print(regex_anchor_two)  # "\b\d{4}-\w+.txt\B"
 ```
 
-### Methods
+#### Methods
+
 This class inherits the methods of class **Regex**, overriding the following.
 
-#### get
+##### get
+
 Returns the value stored in `self.rgx`, but anchored.
 
 ```python
@@ -354,15 +400,20 @@ print(regex_anchor_one.get())  # "^<h1>Hello world</h1>$"
 print(regex_anchor_two.get())  # "\b<h1>Hello world</h1>\B"
 ```
 
-## <a name="range">helper.Range</a>
-This class is intended to assist in creating a RegEx that indicates a character class in form of a *range*. The constructor has two parameters:
+### <a name="range">helper.Range</a>
+
+This class is intended to assist in creating a RegEx that indicates a character class in
+form of a *range*. The constructor has two parameters:
 
 | Parameter | Type | default value |
 | --------- | ---- | ------------ |
 | `minimum` | `str`, `int` | `0` |
 | `maximum` | `str`, `int` | `"z"` |
 
-Ideally you should use this class together with a **Set**. Within a **Set** the hyphen has a "magic" value, that allows it to assign a range. Outside of a set a hyphen has only the hyphen value. So if you want lowercase letters, you should use `[a-z]` instead of `a-z`. `a-z` indicates you only want the values `a`, `-` and `z`.
+Ideally you should use this class together with a **Set**. Within a **Set** the hyphen
+has a "magic" value, that allows it to assign a range. Outside of a set a hyphen has only
+the hyphen value. So if you want lowercase letters, you should use `[a-z]` instead of `a-z`.
+`a-z` indicates you only want the values `a`, `-` and `z`.
 
 ```python
 from mre.helper import Range
@@ -376,10 +427,12 @@ print(digits)  # "0-9"
 print(letters)  # "A-z"
 ```
 
-### Methods
+#### Methods
+
 This class inherits the methods of the **Regex** class and has its own methods.
 
-#### digits
+##### digits
+
 Has two parameters:
 
 | Parameter | Type | default value |
@@ -403,7 +456,8 @@ print(regex_range_three)  # "0-6"
 print(regex_range_four)  # "0-6"
 ```
 
-#### letters
+##### letters
+
 Has four parameters:
 
 | Parameter | Type | default value |
@@ -436,9 +490,10 @@ print(regex_range_five)  # "A-Z"
 print(regex_range_six)  # "a-z"
 ```
 
-# Examples
+## Examples
 
 2 ways to create a RegEx for a **CEP** (brazilian postal code) (`[0-9]{5}-?[0-9]{3}`):
+
 ```python
 from mre import Regex, Set
 
@@ -467,7 +522,8 @@ rgx_cep = Regex(
 )
 ```
 
-RegEx for a **CPF** (brazilian tax payer registry number) (`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
+RegEx for a **CPF** (brazilian tax payer registry number)
+(`[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}`):
 
 ```python
 from mre import Regex, Set
@@ -488,7 +544,8 @@ rgx_cpf = Regex(
 )
 ```
 
-RegEx for a **CNPJ** (ID in the brazilian National Registry of Legal Entities) (`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
+RegEx for a **CNPJ** (ID in the brazilian National Registry of Legal Entities)
+(`\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}`):
 
 ```python
 from mre import Regex, Quantifier

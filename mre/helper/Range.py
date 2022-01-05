@@ -1,19 +1,23 @@
-from mre.Regex import Regex
 from typing import Union
+
+from mre.Regex import Regex
 
 
 class Range(Regex):
-    """Range class."""
-
     def __init__(self, minimum: Union[str, int] = 0, maximum: Union[str, int] = 9):
-        super().__init__("{}-{}".format(minimum, maximum))
+        super().__init__('{}-{}'.format(minimum, maximum))
 
     @staticmethod
     def digits(minimum: int = 0, maximum: int = 9):
         return Range(minimum, maximum)
 
     @staticmethod
-    def letters(minimum: chr = 'A', maximum: chr = 'z', uppercase: bool = False, lowercase: bool = False):
+    def letters(
+        minimum: chr = 'A',
+        maximum: chr = 'z',
+        uppercase: bool = False,
+        lowercase: bool = False,
+    ):
         if lowercase and uppercase:
             minimum = minimum.upper()
             maximum = maximum.lower()

@@ -1,0 +1,4 @@
+[flake8]
+extend-ignore = D100, D101, D102, D103, D104, D105, D106, D107
+import-order-style = google
+max-line-length = 100

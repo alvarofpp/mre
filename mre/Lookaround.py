@@ -1,13 +1,12 @@
-from .Regex import Regex
-from .Group import Group
 from typing import Union
+
+from .Group import Group
+from .Regex import Regex
 
 
 class Lookahead(Group):
-    """Lookahead class."""
-
-    def __init__(self, regex: Union[str, int, Regex] = "", must_not_include: bool = False):
-        lookahead = "?!" if must_not_include else "?="
+    def __init__(self, regex: Union[str, int, Regex] = '', must_not_include: bool = False):
+        lookahead = '?!' if must_not_include else '?='
 
         if isinstance(regex, int):
             self._init_attributes()

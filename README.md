@@ -1,4 +1,5 @@
 # Maker Regular Expression
+
 <a href="https://pypi.org/project/mre/">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/mre.svg">
 </a>
@@ -65,6 +66,7 @@ rgx_cep = Regex(
 ```
 
 ## Tests
+
 To test the package just run the following command.:
 
 ```shell
@@ -72,7 +74,12 @@ coverage run -m unittest discover tests && coverage report -m
 ```
 
 ## Contributing
-Contributions are more than welcome. Fork, improve and make a pull request. For bugs, ideas for improvement or other, please create an [issue](https://github.com/alvarofpp/mre/issues).
+
+Contributions are more than welcome. Fork, improve and make a pull request.
+For bugs, ideas for improvement or other, please create an [issue][issues].
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+[issues]: https://github.com/alvarofpp/mre/issues
