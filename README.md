@@ -67,10 +67,17 @@ rgx_cep = Regex(
 
 ## Tests
 
-To test the package just run the following command.:
+To test the package just run the following command:
 
 ```shell
-coverage run -m unittest discover tests && coverage report -m
+# (first time only) Build the Docker image
+make build
+
+# Run tests
+make test
+
+# Run tests and check coverage
+make test-coverage
 ```
 
 ## Contributing
