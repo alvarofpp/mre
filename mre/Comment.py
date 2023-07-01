@@ -1,4 +1,4 @@
-from .RegexBase import RegexBase
+from mre.RegexBase import RegexBase
 
 
 class Comment(RegexBase):
