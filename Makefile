@@ -1,6 +1,6 @@
 # Variables
 PACKAGE_NAME=mre
-DOCKER_IMAGE_LINTER=alvarofpp/python-linter
+DOCKER_IMAGE_LINTER=alvarofpp/python:linter
 ROOT=$(shell pwd)
 LINT_COMMIT_TARGET_BRANCH=origin/main
 
