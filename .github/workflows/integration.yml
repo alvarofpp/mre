@@ -1,23 +1,39 @@
 ---
-name: Check linters and tests
+name: Integration
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
 
 jobs:
   lint:
-    name: Run linters
     runs-on: ubuntu-latest
+    container:
+      image: alvarofpp/python:linter
+      volumes:
+        - ${{ github.workspace }}:/app
     steps:
-      - uses: actions/checkout@v2
-      - run: make lint
-  test:
-    name: Run unit tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: make build
-      - run: make test-coverage
+      - uses: actions/checkout@v3.5.3
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11'
+      - run: git config --global --add safe.directory /__w/mre/mre
+      - run: lint-commit origin/main
+      - run: lint-markdown
+      - run: lint-yaml
+      - run: lint-python
+
+#  test:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - run: make build
+#      - run: make test-coverage
