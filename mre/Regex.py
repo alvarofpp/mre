@@ -1,7 +1,7 @@
 from typing import Tuple, Union
 
-from .Comment import Comment
-from .RegexBase import RegexBase
+from mre.Comment import Comment
+from mre.RegexBase import RegexBase
 
 
 class Regex(RegexBase):

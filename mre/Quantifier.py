@@ -1,6 +1,6 @@
 from typing import Union
 
-from .Regex import Regex
+from mre.Regex import Regex
 
 
 class Quantifier(Regex):

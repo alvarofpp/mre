@@ -1,0 +1,27 @@
+---
+name: Publish the package on PyPi
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  publish-package:
+    name: Publish the package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate REPOSITORY_NAME env variable
+        run: |
+          echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' \
+          | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+        shell: bash
+      - name: Docker pull
+        run: docker pull alvarofpp/pypi-publish
+      - name: Publish ${{ env.REPOSITORY_NAME }} (${{ github.ref_name }}) to PyPi
+        run: |
+          docker run --rm \
+          -e USER=__token__ \
+          -e PASSWORD=${{ secrets.PYPI_API_TOKEN }} \
+          -v $(pwd):/app \
+          alvarofpp/pypi-publish
