@@ -1,7 +1,7 @@
 from typing import Union
 
-from .Group import Group
-from .Regex import Regex
+from mre.Group import Group
+from mre.Regex import Regex
 
 
 class Lookahead(Group):

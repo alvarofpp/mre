@@ -1,7 +1,7 @@
 from typing import Union
 
-from .Comment import Comment
-from .Regex import Regex
+from mre.Comment import Comment
+from mre.Regex import Regex
 
 
 class Set(Regex):

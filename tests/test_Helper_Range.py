@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from mre import Regex, Set
-from mre.helper import Range
+from mre.helpers import Range
 
 
 class TestHelperRange(TestCase):
